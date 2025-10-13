@@ -128,3 +128,29 @@ main {
 .main_hero-section button:nth-of-type(2) {
   background-color: #ff7f50;
 }
+
+/* Skills & interest CSS style */
+
+.main__skills-interest {
+  min-height: 12rem;
+  background-color: rgba(162, 196, 196, 0.3);
+}
+
+.main__skills-interest h3 {
+  padding: 1rem 0 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.main__skills-interest ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0 0 1.5rem;
+}
+
+.main__skills-interest li {
+  margin: 0 1rem 1rem 0;
+  padding: 0.5rem 1.2rem;
+  border-radius: 1.2rem;
+  color: aliceblue;
+  background-color: #008080;
+}
