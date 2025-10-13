@@ -73,17 +73,15 @@ header nav {
 .main-section {
   display: grid;
   grid-template-columns: 17rem 1fr;
+  margin-top: 4.5rem;
 }
 
 .side-nav {
-  height: 100%;
-  margin-top: 4.5rem;
   background-color: #f4f4f4;
 }
 
 main {
   overflow: hidden;
-  margin-top: 4.5rem;
 }
 
 /* Hero Section CSS Style */
@@ -293,4 +291,19 @@ main {
 #picture,
 #footer {
   scroll-margin-top: 4.5rem;
+}
+
+/* Footer CSS style */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: rgba(162, 196, 196, 1);
+}
+
+footer h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: whitesmoke;
 }
