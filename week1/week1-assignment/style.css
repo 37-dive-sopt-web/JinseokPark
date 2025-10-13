@@ -76,7 +76,7 @@ header nav {
 }
 
 .side-nav {
-  height: 100vh;
+  height: 100%;
   margin-top: 4.5rem;
   background-color: #f4f4f4;
 }
@@ -254,4 +254,43 @@ main {
   flex-shrink: 0;
   object-fit: fill;
   scroll-snap-align: start;
+}
+
+/* Side Nav CSS style */
+
+.side-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.side-nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: sticky;
+  top: 18rem;
+  width: 14rem;
+  height: 18rem;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+.side-nav li {
+  width: 10rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.side-nav a {
+  color: gray;
+}
+
+#hero-section,
+#skills-interest,
+#card-section,
+#picture,
+#footer {
+  scroll-margin-top: 4.5rem;
 }
