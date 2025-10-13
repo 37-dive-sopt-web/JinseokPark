@@ -67,3 +67,64 @@ header nav {
 .header_social-icon img {
   height: 1.2rem;
 }
+
+/* nav와 본문이 들어갈 부분 그리드 구조 스타일링 */
+
+.main-section {
+  display: grid;
+  grid-template-columns: 17rem 1fr;
+}
+
+.side-nav {
+  height: 100vh;
+  margin-top: 4.5rem;
+  background-color: #f4f4f4;
+}
+
+main {
+  margin-top: 4.5rem;
+}
+
+/* Hero Section CSS Style */
+
+.main_hero-section {
+  display: flex;
+  align-items: center;
+  height: 18rem;
+  padding-left: 3rem;
+  background-color: #efefef;
+}
+
+.main_hero-section img {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+}
+
+.main_hero-section div {
+  height: 9rem;
+  margin-left: 2rem;
+}
+
+.main_hero-section h1 {
+  font-size: 2rem;
+  line-height: 4rem;
+}
+
+.main_hero-section button {
+  margin-top: 1.2rem;
+  margin-right: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+}
+
+.main_hero-section button:nth-of-type(1) {
+  background-color: #20b2aa;
+}
+
+.main_hero-section button:nth-of-type(2) {
+  background-color: #ff7f50;
+}
