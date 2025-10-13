@@ -82,6 +82,7 @@ header nav {
 }
 
 main {
+  overflow: hidden;
   margin-top: 4.5rem;
 }
 
@@ -223,4 +224,34 @@ main {
 .card i {
   font-size: 1rem;
   color: hotpink;
+}
+
+/* 사진 리스트 CSS style */
+
+.main__picture {
+  padding: 2rem;
+  background-color: #f0f8ff;
+}
+
+.main__picture h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.picture-list {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  gap: 1.5rem;
+}
+
+.picture-list img {
+  width: 16rem;
+  height: 10rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  object-fit: fill;
+  scroll-snap-align: start;
 }
