@@ -154,3 +154,73 @@ main {
   color: aliceblue;
   background-color: #008080;
 }
+
+/* Card Section CSS style */
+
+.main__card-section {
+  background-color: rgba(162, 196, 196, 0.7);
+}
+
+.main__card-section h1 {
+  padding: 2rem 0 0 2rem;
+  font-size: 1.5rem;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 0 2rem;
+  padding-bottom: 3rem;
+  gap: 2rem;
+}
+
+.card {
+  overflow: hidden;
+  width: 14rem;
+  height: 18rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 2rem;
+  background-color: white;
+}
+
+.card img {
+  height: 9rem;
+  width: 100%;
+  object-fit: fill;
+}
+
+.card__title-like {
+  display: flex;
+  position: relative;
+}
+
+.card__title-like h3 {
+  padding-left: 0.8rem;
+  padding-top: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card p {
+  padding: 0 1rem 0 1rem;
+  margin-top: 2rem;
+  color: gray;
+}
+
+.card__title-like a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: pink;
+}
+
+.card i {
+  font-size: 1rem;
+  color: hotpink;
+}
