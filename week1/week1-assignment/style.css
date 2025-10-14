@@ -268,7 +268,7 @@ main {
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
-  padding-bottom: 0.5rem;
+  padding: 1rem 1rem;
   gap: 1.5rem;
 }
 
@@ -280,6 +280,11 @@ main {
   flex-shrink: 0;
   object-fit: fill;
   scroll-snap-align: start;
+  transition: all 0.3s ease;
+}
+
+.picture-list img:hover {
+  transform: scale(1.1);
 }
 
 /* Side Nav CSS style */
@@ -307,6 +312,25 @@ main {
   width: 10rem;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
+}
+
+.side-nav li:hover {
+  border-radius: 1.2rem;
+  background-color: #008080;
+}
+
+.side-nav li:first-child:hover {
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+
+.side-nav li:last-child:hover {
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+
+.side-nav li:hover a {
+  color: white;
 }
 
 .side-nav a {
