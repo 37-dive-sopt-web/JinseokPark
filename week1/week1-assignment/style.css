@@ -260,26 +260,43 @@ main {
 }
 
 .main__picture h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
 .picture-list {
   display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  padding: 1rem 1rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.picture-group {
+  display: flex;
   gap: 1.5rem;
+  padding-right: 1.5rem;
+  will-change: transform;
+  animation: scrolling 30s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.picture-list:hover .picture-group {
+  animation-play-state: paused;
 }
 
 .picture-list img {
   width: 16rem;
   height: 10rem;
-  margin-right: 1rem;
   border-radius: 1rem;
-  flex-shrink: 0;
-  object-fit: fill;
-  scroll-snap-align: start;
+  aspect-ratio: 16/10;
+  object-fit: cover;
   transition: all 0.3s ease;
 }
 
