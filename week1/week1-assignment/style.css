@@ -86,31 +86,39 @@ main {
 
 /* Hero Section CSS Style */
 
-.main_hero-section {
+.main__hero-section {
   display: flex;
   align-items: center;
-  height: 18rem;
+  min-height: 16rem;
   padding-left: 3rem;
   background-color: #efefef;
 }
 
-.main_hero-section img {
+.main__hero-section img {
   width: 12rem;
   height: 12rem;
   border-radius: 50%;
+  transition: all 0.3s ease;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
-.main_hero-section div {
-  height: 9rem;
+.main__hero-section img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.main__hero-section div {
+  padding-bottom: 1rem;
   margin-left: 2rem;
 }
 
-.main_hero-section h1 {
+.main__hero-section h1 {
   font-size: 2rem;
   line-height: 4rem;
 }
 
-.main_hero-section button {
+.main__hero-section button {
   margin-top: 1.2rem;
   margin-right: 0.5rem;
   padding: 0.7rem 1.5rem;
@@ -118,13 +126,18 @@ main {
   border: none;
   font-size: 1rem;
   color: white;
+  transition: all 0.3s ease;
 }
 
-.main_hero-section button:nth-of-type(1) {
+.main__hero-section button:hover {
+  transform: translateY(-0.3rem) scale(1.05);
+}
+
+.main__hero-section button:nth-of-type(1) {
   background-color: #20b2aa;
 }
 
-.main_hero-section button:nth-of-type(2) {
+.main__hero-section button:nth-of-type(2) {
   background-color: #ff7f50;
 }
 
