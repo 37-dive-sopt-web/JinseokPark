@@ -144,7 +144,7 @@ main {
 /* Skills & interest CSS style */
 
 .main__skills-interest {
-  min-height: 12rem;
+  min-height: 5rem;
   background-color: rgba(162, 196, 196, 0.3);
 }
 
@@ -156,7 +156,7 @@ main {
 .main__skills-interest ul {
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem 0 0 1.5rem;
+  padding: 1rem 0 1rem 1.5rem;
 }
 
 .main__skills-interest li {
@@ -179,26 +179,31 @@ main {
 }
 
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   margin: 1.5rem 0 0 2rem;
-  padding-bottom: 3rem;
+  padding: 0 1.5rem 1.5rem 0;
   gap: 2rem;
 }
 
 .card {
   overflow: hidden;
-  width: 14rem;
-  height: 18rem;
-  border: 1px solid #e0e0e0;
+  height: 100%;
+  padding-bottom: 2rem;
   border-radius: 2rem;
   background-color: white;
+  transition: all 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
-  height: 9rem;
   width: 100%;
-  object-fit: fill;
+  aspect-ratio: 2/1;
+  object-fit: cover;
 }
 
 .card__title-like {
@@ -229,12 +234,22 @@ main {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+  background-color: #efefef;
+  transition: all 0.3s ease;
+}
+
+.card__title-like a:hover {
   background-color: pink;
+}
+
+.card__title-like a:hover i {
+  color: hotpink;
 }
 
 .card i {
   font-size: 1rem;
-  color: hotpink;
+  color: gray;
+  transition: all 0.3s ease;
 }
 
 /* 사진 리스트 CSS style */
