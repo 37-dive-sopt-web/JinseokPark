@@ -10,7 +10,7 @@ header {
   width: 100%;
   height: 4.5rem;
   padding: 0 1.5rem;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: rgb(245, 245, 245);
   z-index: 10;
 }
 
@@ -64,6 +64,15 @@ header nav {
   font-size: 1.2rem;
 }
 
+.header_social-icon a:hover {
+  border: 1px solid #008080;
+  background-color: whitesmoke;
+}
+
+.header_social-icon a:hover i {
+  color: #008080;
+}
+
 .header_social-icon img {
   height: 1.2rem;
 }
@@ -73,7 +82,6 @@ header nav {
 .main-section {
   display: grid;
   grid-template-columns: 17rem 1fr;
-  margin-top: 4.5rem;
 }
 
 .side-nav {
@@ -88,8 +96,8 @@ main {
 
 .main__hero-section {
   display: flex;
-  align-items: center;
-  min-height: 16rem;
+  align-items: flex-end;
+  min-height: 21rem;
   padding-left: 3rem;
   background-color: #efefef;
 }
@@ -97,6 +105,7 @@ main {
 .main__hero-section img {
   width: 12rem;
   height: 12rem;
+  margin-bottom: 2rem;
   border-radius: 50%;
   transition: all 0.3s ease;
   aspect-ratio: 1/1;
@@ -111,6 +120,7 @@ main {
 .main__hero-section div {
   padding-bottom: 1rem;
   margin-left: 2rem;
+  margin-bottom: 2rem;
 }
 
 .main__hero-section h1 {
@@ -144,7 +154,6 @@ main {
 /* Skills & interest CSS style */
 
 .main__skills-interest {
-  min-height: 5rem;
   background-color: rgba(162, 196, 196, 0.3);
 }
 
@@ -156,11 +165,11 @@ main {
 .main__skills-interest ul {
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem 0 1rem 1.5rem;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
 }
 
 .main__skills-interest li {
-  margin: 0 1rem 1rem 0;
   padding: 0.5rem 1.2rem;
   border-radius: 1.2rem;
   color: aliceblue;
@@ -182,13 +191,12 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   margin: 1.5rem 0 0 2rem;
-  padding: 0 1.5rem 1.5rem 0;
+  padding: 0 2rem 1.5rem 0;
   gap: 2rem;
 }
 
 .card {
   overflow: hidden;
-  height: 100%;
   padding-bottom: 2rem;
   border-radius: 2rem;
   background-color: white;
@@ -215,7 +223,6 @@ main {
   padding-left: 0.8rem;
   padding-top: 0.7rem;
   font-size: 1.2rem;
-  font-weight: 600;
 }
 
 .card p {
@@ -238,18 +245,18 @@ main {
   transition: all 0.3s ease;
 }
 
+.card i {
+  font-size: 1rem;
+  color: gray;
+  transition: all 0.3s ease;
+}
+
 .card__title-like a:hover {
   background-color: pink;
 }
 
 .card__title-like a:hover i {
   color: hotpink;
-}
-
-.card i {
-  font-size: 1rem;
-  color: gray;
-  transition: all 0.3s ease;
 }
 
 /* 사진 리스트 CSS style */
@@ -274,7 +281,6 @@ main {
   display: flex;
   gap: 1.5rem;
   padding-right: 1.5rem;
-  will-change: transform;
   animation: scrolling 30s linear infinite;
 }
 
@@ -332,7 +338,7 @@ main {
 }
 
 .side-nav li:hover {
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   background-color: #008080;
 }
 
@@ -346,12 +352,12 @@ main {
   border-top-right-radius: 0.2rem;
 }
 
-.side-nav li:hover a {
-  color: white;
-}
-
 .side-nav a {
   color: gray;
+}
+
+.side-nav li:hover a {
+  color: white;
 }
 
 #hero-section,
