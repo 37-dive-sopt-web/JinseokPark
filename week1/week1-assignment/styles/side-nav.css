@@ -1,0 +1,57 @@
+/* Side Nav CSS style */
+
+.side-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.side-nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: sticky;
+  top: 18rem;
+  width: 14rem;
+  height: 18rem;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+.side-nav li {
+  width: 10rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.side-nav li:hover {
+  border-radius: 1rem;
+  background-color: #008080;
+}
+
+.side-nav li:first-child:hover {
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+
+.side-nav li:last-child:hover {
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+
+.side-nav a {
+  color: gray;
+}
+
+.side-nav li:hover a {
+  color: white;
+}
+
+#hero-section,
+#skills-interest,
+#card-section,
+#picture,
+#footer {
+  scroll-margin-top: 4.5rem;
+}
