@@ -1,5 +1,6 @@
 @import url("./reset.css");
 @import url("./header.css");
+@import url("./filter.css");
 
 :root {
   --color-bg-primary: #008080;
@@ -8,5 +9,6 @@
 }
 
 body {
+  background-color: azure;
   font-family: "Noto Sans KR", sans-serif;
 }

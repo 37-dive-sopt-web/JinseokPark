@@ -1,0 +1,82 @@
+/* 메인 섹션 레이아웃 */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* filter 섹션 CSS 스타일링 */
+
+.filter {
+  min-width: 80%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+/* filter 섹션 그리드 제어 */
+
+.filter__grid {
+  display: grid;
+  grid-template-rows: auto;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.filter__first {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.filter__second {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.filter__item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
+}
+
+.filter__btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+/* 그리드 제외 기타 요소 스타일링 */
+
+.filter__btn button {
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  background-color: #008080;
+  color: white;
+}
+
+.filter__grid h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.filter h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.filter__grid input {
+  height: 2rem;
+  padding: 0 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.5s ease;
+}
+
+.filter__grid input:focus {
+  border-color: var(--color-bg-primary);
+}
