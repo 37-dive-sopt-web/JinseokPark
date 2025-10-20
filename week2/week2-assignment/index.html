@@ -20,7 +20,7 @@
       <div class="header__text"><p>🚀 DIVE SOPT 37기 WEB 박진석</p></div>
     </header>
     <main>
-      <div class="filter">
+      <section class="filter">
         <h2>검색 필터</h2>
         <div class="filter__grid">
           <div class="filter__name filter__item">
@@ -60,7 +60,41 @@
           <button>적용</button>
           <button>초기화</button>
         </div>
-      </div>
+      </section>
+      <section class="member_list">
+        <div class="member_list__header">
+          <h3>37기 웹 파트 목록</h3>
+          <div class="member_list__btnGroup">
+            <button>선택 삭제</button>
+            <button>추가</button>
+          </div>
+        </div>
+        <table class="member_list__table">
+          <colgroup>
+            <col style="width: 7%" />
+            <col style="width: 10%" />
+            <col style="width: 20%" />
+            <col style="width: auto" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 15%" />
+            <col style="width: 7%" />
+          </colgroup>
+          <thead>
+            <tr class="table_row">
+              <th><input type="checkbox" /></th>
+              <th>이름</th>
+              <th>영문 이름</th>
+              <th>깃허브</th>
+              <th>성별</th>
+              <th>역할</th>
+              <th>금잔디조</th>
+              <th>나이</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </main>
   </body>
 </html>
