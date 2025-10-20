@@ -1,0 +1,12 @@
+@import url("./reset.css");
+@import url("./header.css");
+
+:root {
+  --color-bg-primary: #008080;
+  --color-bg-secondary: #b2dfdb;
+  --color-text-white: #fffef5;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
