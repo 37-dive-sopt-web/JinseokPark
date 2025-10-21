@@ -46,11 +46,16 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.table_row th {
+.table_row th,
+.table_row td {
   padding: 0.8rem 0;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 700;
   text-align: left;
+}
+
+.table_row td {
+  font-weight: 500;
 }
 
 .table_row input {
