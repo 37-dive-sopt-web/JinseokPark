@@ -42,3 +42,53 @@ function appendMembers(member) {
 
   tbody.appendChild(tr);
 }
+
+/* 필터링 기능 구현 */
+
+const submit_btn = document.querySelector(".btn_submit");
+const reset_btn = document.querySelector(".btn_reset");
+
+submit_btn.addEventListener("click", filterMember);
+
+function filterMember() {
+  const filter_input = {
+    name: document.querySelector(".filter__name input"),
+    englishName: document.querySelector(".filter__engname input"),
+    github: document.querySelector(".filter__github input"),
+    gender: document.querySelector(".filter__gender input"),
+    role: document.querySelector(".filter__role input"),
+    codeReviewGroup: document.querySelector(".filter__team input"),
+    age: document.querySelector(".filter__age input"),
+  };
+
+  const active_filter = [];
+  let filtered_member = [];
+
+  for (const key of Object.keys(filter_input)) {
+    if (filter_input[key].value !== "") active_filter.push(key);
+  }
+
+  filtered_member = members.filter((member) => {
+    return active_filter.every((key) => {
+      return String(member[key]).includes(filter_input[key].value);
+    });
+  });
+
+  tbody.innerHTML = "";
+  filtered_member.forEach(appendMembers);
+}
+
+/* 필터링 초기화 */
+
+reset_btn.addEventListener("click", resetFilter);
+
+function resetFilter() {
+  const all_input = document.querySelectorAll("input");
+
+  all_input.forEach((input) => {
+    input.value = ""; // 각 input의 값을 빈 문자열로 설정
+  });
+
+  tbody.innerHTML = "";
+  members.forEach(appendMembers);
+}

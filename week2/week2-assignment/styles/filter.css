@@ -58,6 +58,11 @@ main {
   color: white;
 }
 
+.filter__btn button:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-bg-primary);
+}
+
 .filter__grid h3 {
   font-size: 0.8rem;
   font-weight: 600;
