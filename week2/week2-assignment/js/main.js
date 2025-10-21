@@ -24,9 +24,9 @@ const table_key = [
 
 const savedData = localStorage.getItem(data_key);
 members = JSON.parse(savedData);
-members.forEach(appendMembers);
+members.forEach(renderMembers);
 
-function appendMembers(member) {
+function renderMembers(member) {
   const tr = document.createElement("tr");
   tr.classList.add("table_row");
 
@@ -36,7 +36,17 @@ function appendMembers(member) {
 
   table_key.forEach((key) => {
     const td = document.createElement("td");
-    td.textContent = member[key];
+    if (key === "github") {
+      const a = document.createElement("a");
+      a.href = `https://github.com/${member[key]}`;
+      a.textContent = member[key];
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      td.appendChild(a);
+    } else {
+      td.textContent = member[key];
+    }
+
     tr.appendChild(td);
   });
 
@@ -75,7 +85,7 @@ function filterMember() {
   });
 
   tbody.innerHTML = "";
-  filtered_member.forEach(appendMembers);
+  filtered_member.forEach(renderMembers);
 }
 
 /* 필터링 초기화 */
@@ -95,7 +105,7 @@ function resetFilter() {
   });
 
   tbody.innerHTML = "";
-  members.forEach(appendMembers);
+  members.forEach(renderMembers);
 }
 
 /* 선택 삭제 기능 구현 */
@@ -117,7 +127,7 @@ function deleteMember() {
 
   localStorage.setItem(data_key, JSON.stringify(members));
   tbody.innerHTML = "";
-  members.forEach(appendMembers);
+  members.forEach(renderMembers);
 }
 
 /* 전체 선택 기능 구현 */

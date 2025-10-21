@@ -62,8 +62,12 @@
   margin-left: 1rem;
 }
 
-.github_link {
-  /* 나중에 데이터 넣었을 때 깃허브 아이디만 색 변화*/
+.table_row a {
   font-weight: 600;
   color: var(--color-bg-primary);
+}
+
+.table_row a:hover {
+  font-weight: 700;
+  color: var(--color-bg-secondary);
 }
