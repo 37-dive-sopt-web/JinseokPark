@@ -87,13 +87,35 @@ function resetFilter() {
   const all_select = document.querySelectorAll("select");
 
   all_input.forEach((input) => {
-    input.value = ""; // 각 input의 값을 빈 문자열로 설정
+    input.value = "";
   });
 
   all_select.forEach((select) => {
-    select.value = ""; // 각 input의 값을 빈 문자열로 설정
+    select.value = "";
   });
 
+  tbody.innerHTML = "";
+  members.forEach(appendMembers);
+}
+
+/* 선택 삭제 기능 구현 */
+
+const delete_btn = document.querySelector(".btn_delete");
+
+delete_btn.addEventListener("click", deleteMember);
+
+function deleteMember() {
+  const checked_box = tbody.querySelectorAll("input[type='checkbox']:checked");
+
+  const deleteID = Array.from(checked_box).map((box) => {
+    return Number(box.id);
+  });
+
+  members = members.filter((member) => {
+    return !deleteID.includes(member.id);
+  });
+
+  localStorage.setItem(data_key, JSON.stringify(members));
   tbody.innerHTML = "";
   members.forEach(appendMembers);
 }
