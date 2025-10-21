@@ -73,15 +73,17 @@ main {
   font-weight: 600;
 }
 
-.filter__grid input {
+.filter__grid input,
+.filter__grid select {
   height: 2rem;
-  padding: 0 16px;
+  padding: 0 0.5rem;
   border: 1px solid #e0e0e0;
   border-radius: 0.5rem;
   outline: none;
   transition: all 0.5s ease;
 }
 
-.filter__grid input:focus {
+.filter__grid input:focus,
+.filter__grid select:focus {
   border-color: var(--color-bg-primary);
 }

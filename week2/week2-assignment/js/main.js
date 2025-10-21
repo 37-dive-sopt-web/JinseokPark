@@ -55,8 +55,8 @@ function filterMember() {
     name: document.querySelector(".filter__name input"),
     englishName: document.querySelector(".filter__engname input"),
     github: document.querySelector(".filter__github input"),
-    gender: document.querySelector(".filter__gender input"),
-    role: document.querySelector(".filter__role input"),
+    gender: document.querySelector(".filter__gender select"),
+    role: document.querySelector(".filter__role select"),
     codeReviewGroup: document.querySelector(".filter__team input"),
     age: document.querySelector(".filter__age input"),
   };
@@ -84,9 +84,14 @@ reset_btn.addEventListener("click", resetFilter);
 
 function resetFilter() {
   const all_input = document.querySelectorAll("input");
+  const all_select = document.querySelectorAll("select");
 
   all_input.forEach((input) => {
     input.value = ""; // 각 input의 값을 빈 문자열로 설정
+  });
+
+  all_select.forEach((select) => {
+    select.value = ""; // 각 input의 값을 빈 문자열로 설정
   });
 
   tbody.innerHTML = "";
