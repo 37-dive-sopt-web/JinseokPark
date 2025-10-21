@@ -119,3 +119,16 @@ function deleteMember() {
   tbody.innerHTML = "";
   members.forEach(appendMembers);
 }
+
+/* 전체 선택 기능 구현 */
+
+const select_all = document.querySelector(".btn_all");
+
+select_all.addEventListener("change", (event) => {
+  const check = event.target.checked;
+  const all_checkbox = tbody.querySelectorAll("input[type='checkbox']");
+
+  all_checkbox.forEach((box) => {
+    box.checked = check;
+  });
+});
