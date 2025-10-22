@@ -75,13 +75,13 @@
   border-color: var(--color-bg-primary);
 }
 
-.btn_modal {
+.modal__submit {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
 }
 
-.btn_modal button {
+.modal__submit button {
   padding: 0.7rem 1rem;
   border-radius: 0.5rem;
   background-color: var(--color-bg-secondary);
@@ -89,7 +89,7 @@
   transition: all 0.3s ease;
 }
 
-.btn_modal button:hover {
+.modal__submit button:hover {
   background-color: var(--color-bg-primary);
   color: var(--color-text-white);
 }

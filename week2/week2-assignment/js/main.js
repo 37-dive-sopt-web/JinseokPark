@@ -145,20 +145,73 @@ select_all.addEventListener("change", (event) => {
 
 /* 모달 구현 */
 
-const modal_btn = document.querySelector(".btn_modal");
+const open_modalBtn = document.querySelector(".btn_modal");
 const modal_bg = document.querySelector(".modal_bg");
-const close_modal = document.querySelector(".modal__form_title button");
+const close_modalBtn = document.querySelector(".modal__form_title button");
+const submit_modalBtn = document.querySelector(".modal__submit button");
+const modal_allInput = document.querySelectorAll(
+  ".modal__form input, .modal__form select"
+);
 
-modal_btn.addEventListener("click", () => {
+open_modalBtn.addEventListener("click", () => {
   modal_bg.classList.add("pop_modal");
 });
 
-close_modal.addEventListener("click", () => {
+close_modalBtn.addEventListener("click", () => {
   modal_bg.classList.remove("pop_modal");
+  modal_allInput.forEach((input) => {
+    input.value = "";
+  });
 });
 
 modal_bg.addEventListener("click", (event) => {
   if (event.target === modal_bg) {
     modal_bg.classList.remove("pop_modal");
+    modal_allInput.forEach((input) => {
+      input.value = "";
+    });
   }
 });
+
+submit_modalBtn.addEventListener("click", appendMember);
+
+function appendMember(event) {
+  event.preventDefault();
+
+  const member_input = {
+    name: document.querySelector(".modal__name"),
+    engname: document.querySelector(".modal__engname"),
+    github: document.querySelector(".modal__github"),
+    gender: document.querySelector(".modal__gender"),
+    role: document.querySelector(".modal__role"),
+    team: document.querySelector(".modal__team"),
+    age: document.querySelector(".modal__age"),
+  };
+
+  for (const ipt of Object.values(member_input)) {
+    if (ipt.value === "") {
+      alert("모든 필드를 입력해야 새로운 멤버를 추가할 수 있습니다!");
+      return;
+    }
+  }
+
+  const new_member = {
+    id: Date.now(),
+    name: member_input.name.value,
+    englishName: member_input.engname.value,
+    github: member_input.github.value,
+    gender: member_input.gender.value,
+    role: member_input.role.value,
+    codeReviewGroup: member_input.team.value,
+    age: member_input.age.value,
+  };
+
+  members.push(new_member);
+  localStorage.setItem(data_key, JSON.stringify(members));
+  tbody.innerHTML = "";
+  members.forEach(renderMembers);
+  modal_bg.classList.remove("pop_modal");
+  modal_allInput.forEach((input) => {
+    input.value = "";
+  });
+}
