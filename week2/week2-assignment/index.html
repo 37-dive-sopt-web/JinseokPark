@@ -69,12 +69,13 @@
           <button class="btn_reset">초기화</button>
         </div>
       </section>
+
       <section class="member_list">
         <div class="member_list__header">
           <h3>37기 웹 파트 목록</h3>
           <div class="member_list__btnGroup">
             <button class="btn_delete">선택 삭제</button>
-            <button class="btn_add">추가</button>
+            <button class="btn_modal">추가</button>
           </div>
         </div>
         <table class="member_list__table">
@@ -103,6 +104,80 @@
           <tbody></tbody>
         </table>
       </section>
+
+      <div class="modal_bg">
+        <div class="modal">
+          <div class="modal__form_title">
+            <h3>멤버 추가</h3>
+            <button>X</button>
+          </div>
+          <form class="modal__form">
+            <div class="modal__input">
+              <h4>이름</h4>
+              <input
+                class="modal__name"
+                type="text"
+                placeholder="이름을 입력하세요"
+              />
+            </div>
+            <div class="modal__input">
+              <h4>영문이름</h4>
+              <input
+                class="modal__engname"
+                type="text"
+                placeholder="영문 이름을 입력하세요"
+              />
+            </div>
+            <div class="modal__input">
+              <h4>깃허브</h4>
+              <input
+                class="modal__github"
+                type="text"
+                placeholder="깃허브 아이디를 입력하세요"
+              />
+            </div>
+            <div class="modal__twoInput">
+              <div class="modal__input">
+                <h4>성별</h4>
+                <select class="modal__gender">
+                  <option value="">선택</option>
+                  <option value="남자">남자</option>
+                  <option value="여자">여자</option>
+                </select>
+              </div>
+              <div class="modal__input">
+                <h4>역할</h4>
+                <select class="modal__role">
+                  <option value="">선택</option>
+                  <option value="OB">OB</option>
+                  <option value="YB">YB</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal__twoInput">
+              <div class="modal__input">
+                <h4>금잔디조</h4>
+                <input
+                  class="modal__team"
+                  type="text"
+                  placeholder="금잔디조를 입력하세요(1~9)"
+                />
+              </div>
+              <div class="modal__input">
+                <h4>나이</h4>
+                <input
+                  class="modal__age"
+                  type="text"
+                  placeholder="나이를 입력하세요"
+                />
+              </div>
+            </div>
+            <div class="btn_modal">
+              <button>추가</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
     <script type="module" src="./js/main.js"></script>
   </body>

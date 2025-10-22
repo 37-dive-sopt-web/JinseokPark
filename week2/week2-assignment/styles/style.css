@@ -2,6 +2,7 @@
 @import url("./header.css");
 @import url("./filter.css");
 @import url("./table.css");
+@import url("./modal.css");
 
 :root {
   --color-bg-primary: #008080;

@@ -142,3 +142,23 @@ select_all.addEventListener("change", (event) => {
     box.checked = check;
   });
 });
+
+/* 모달 구현 */
+
+const modal_btn = document.querySelector(".btn_modal");
+const modal_bg = document.querySelector(".modal_bg");
+const close_modal = document.querySelector(".modal__form_title button");
+
+modal_btn.addEventListener("click", () => {
+  modal_bg.classList.add("pop_modal");
+});
+
+close_modal.addEventListener("click", () => {
+  modal_bg.classList.remove("pop_modal");
+});
+
+modal_bg.addEventListener("click", (event) => {
+  if (event.target === modal_bg) {
+    modal_bg.classList.remove("pop_modal");
+  }
+});

@@ -1,0 +1,95 @@
+/* 모달 렌더링 제어 스타일링 */
+
+.modal_bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.pop_modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 모달 스타일링 */
+
+.modal {
+  min-width: 30rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.modal__form_title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.modal__form_title h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.modal__form_title button {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.modal__twoInput {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal__input h4 {
+  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.modal__input input,
+.modal__input select {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.5s ease;
+}
+
+.modal__input input:focus,
+.modal__input select:focus {
+  border-color: var(--color-bg-primary);
+}
+
+.btn_modal {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn_modal button {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-bg-primary);
+  transition: all 0.3s ease;
+}
+
+.btn_modal button:hover {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-white);
+}
