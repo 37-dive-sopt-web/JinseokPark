@@ -10,6 +10,7 @@ import {
   DATA_KEY,
   getMembers,
   tbody,
+  member_input,
 } from "./dom.js";
 
 open_modalBtn.addEventListener("click", () => {
@@ -37,16 +38,6 @@ submit_modalBtn.addEventListener("click", appendMember);
 
 function appendMember(event) {
   event.preventDefault(); /* alert 띄운 이후, 페이지 재로드 방지 용도 */
-
-  const member_input = {
-    name: document.querySelector(".modal__name"),
-    engname: document.querySelector(".modal__engname"),
-    github: document.querySelector(".modal__github"),
-    gender: document.querySelector(".modal__gender"),
-    role: document.querySelector(".modal__role"),
-    team: document.querySelector(".modal__team"),
-    age: document.querySelector(".modal__age"),
-  };
 
   /* 위 인풋 중 하나라도 비어있으면, alert */
   for (const ipt of Object.values(member_input)) {

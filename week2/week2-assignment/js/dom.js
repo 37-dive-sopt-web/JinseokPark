@@ -20,6 +20,27 @@ export const modal_allInput = document.querySelectorAll(
   ".modal__form input, .modal__form select"
 );
 
+/* 인풋 모아놓은 객체 */
+export const filter_input = {
+  name: document.querySelector(".filter__name input"),
+  englishName: document.querySelector(".filter__engname input"),
+  github: document.querySelector(".filter__github input"),
+  gender: document.querySelector(".filter__gender select"),
+  role: document.querySelector(".filter__role select"),
+  codeReviewGroup: document.querySelector(".filter__team input"),
+  age: document.querySelector(".filter__age input"),
+};
+
+export const member_input = {
+  name: document.querySelector(".modal__name"),
+  engname: document.querySelector(".modal__engname"),
+  github: document.querySelector(".modal__github"),
+  gender: document.querySelector(".modal__gender"),
+  role: document.querySelector(".modal__role"),
+  team: document.querySelector(".modal__team"),
+  age: document.querySelector(".modal__age"),
+};
+
 /* DOM은 아니지만 자주 사용하는 요소 */
 
 export const DATA_KEY = "memberData"; /* localstorage 데이터 키 변수 사용 */

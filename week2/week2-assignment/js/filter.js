@@ -1,18 +1,15 @@
 /* 필터링 기능 구현 */
 
 import { renderMembers } from "./render.js";
-import { tbody, all_input, all_select, getMembers } from "./dom.js";
+import {
+  tbody,
+  all_input,
+  all_select,
+  filter_input,
+  getMembers,
+} from "./dom.js";
 
 export function filterMember() {
-  const filter_input = {
-    name: document.querySelector(".filter__name input"),
-    englishName: document.querySelector(".filter__engname input"),
-    github: document.querySelector(".filter__github input"),
-    gender: document.querySelector(".filter__gender select"),
-    role: document.querySelector(".filter__role select"),
-    codeReviewGroup: document.querySelector(".filter__team input"),
-    age: document.querySelector(".filter__age input"),
-  };
   const members = getMembers();
 
   /* filter_input 중에 비어있지 않은 요소의 key만 active_filter에 담음 */
