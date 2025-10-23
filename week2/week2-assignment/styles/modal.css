@@ -55,8 +55,7 @@
   gap: 1rem;
 }
 
-.modal__input h4 {
-  margin-bottom: 0.7rem;
+.modal-label {
   font-size: 0.9rem;
 }
 
@@ -64,6 +63,7 @@
 .modal__input select {
   width: 100%;
   height: 2.5rem;
+  margin-top: 0.7rem;
   padding: 0 0.5rem;
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;

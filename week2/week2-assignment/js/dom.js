@@ -22,23 +22,23 @@ export const modal_allInput = document.querySelectorAll(
 
 /* 인풋 모아놓은 객체 */
 export const filter_input = {
-  name: document.querySelector(".filter__name input"),
-  englishName: document.querySelector(".filter__engname input"),
-  github: document.querySelector(".filter__github input"),
-  gender: document.querySelector(".filter__gender select"),
-  role: document.querySelector(".filter__role select"),
-  codeReviewGroup: document.querySelector(".filter__team input"),
-  age: document.querySelector(".filter__age input"),
+  name: document.querySelector("#name"),
+  englishName: document.querySelector("#eng-name"),
+  github: document.querySelector("#github"),
+  gender: document.querySelector("#gender"),
+  role: document.querySelector("#role"),
+  codeReviewGroup: document.querySelector("#team"),
+  age: document.querySelector("#age"),
 };
 
 export const member_input = {
-  name: document.querySelector(".modal__name"),
-  engname: document.querySelector(".modal__engname"),
-  github: document.querySelector(".modal__github"),
-  gender: document.querySelector(".modal__gender"),
-  role: document.querySelector(".modal__role"),
-  team: document.querySelector(".modal__team"),
-  age: document.querySelector(".modal__age"),
+  name: document.querySelector("#modal-name"),
+  engname: document.querySelector("#modal-engname"),
+  github: document.querySelector("#modal-github"),
+  gender: document.querySelector("#modal-gender"),
+  role: document.querySelector("#modal-role"),
+  team: document.querySelector("#modal-team"),
+  age: document.querySelector("#modal-age"),
 };
 
 /* DOM은 아니지만 자주 사용하는 요소 */
