@@ -14,14 +14,17 @@ export function filterMember() {
     age: document.querySelector(".filter__age input"),
   };
   const members = getMembers();
-  const active_filter = [];
 
+  /* filter_input 중에 비어있지 않은 요소의 key만 active_filter에 담음 */
+  const active_filter = [];
   for (const key of Object.keys(filter_input)) {
     if (filter_input[key].value !== "") active_filter.push(key);
   }
 
+  /* 이전에 담은 active_filter 배열 기준으로 필터링한 멤버 배열 새로 만들기 */
   const filtered_member = members.filter((member) => {
     return active_filter.every((key) => {
+      /* active_filter 배열에 담긴 모든 조건을 만족하게 하도록 every 사용 */
       return String(member[key]).includes(filter_input[key].value);
     });
   });
@@ -30,7 +33,7 @@ export function filterMember() {
   filtered_member.forEach(renderMembers);
 }
 
-/* 필터링 초기화 */
+/* 필터링 초기화 - 필터 인풋 다 비우고, localStorage 데이터 렌더링 */
 
 export function resetFilter() {
   const members = getMembers();

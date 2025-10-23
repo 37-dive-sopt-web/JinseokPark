@@ -23,6 +23,7 @@ close_modalBtn.addEventListener("click", () => {
   });
 });
 
+/* 모달 뒤 배경 눌렀을 때 모달 닫기 & 모달 내부 인풋 비우기 */
 modal_bg.addEventListener("click", (event) => {
   if (event.target === modal_bg) {
     modal_bg.classList.remove("pop_modal");
@@ -35,9 +36,8 @@ modal_bg.addEventListener("click", (event) => {
 submit_modalBtn.addEventListener("click", appendMember);
 
 function appendMember(event) {
-  event.preventDefault();
+  event.preventDefault(); /* alert 띄운 이후, 페이지 재로드 방지 용도 */
 
-  const members = getMembers();
   const member_input = {
     name: document.querySelector(".modal__name"),
     engname: document.querySelector(".modal__engname"),
@@ -48,6 +48,7 @@ function appendMember(event) {
     age: document.querySelector(".modal__age"),
   };
 
+  /* 위 인풋 중 하나라도 비어있으면, alert */
   for (const ipt of Object.values(member_input)) {
     if (ipt.value === "") {
       alert("모든 필드를 입력해야 새로운 멤버를 추가할 수 있습니다!");
@@ -55,6 +56,7 @@ function appendMember(event) {
     }
   }
 
+  /* 새로운 멤버 객체 생성 */
   const new_member = {
     id: Date.now(),
     name: member_input.name.value,
@@ -66,10 +68,13 @@ function appendMember(event) {
     age: member_input.age.value,
   };
 
+  const members = getMembers();
   members.push(new_member);
   localStorage.setItem(DATA_KEY, JSON.stringify(members));
   tbody.innerHTML = "";
   members.forEach(renderMembers);
+
+  /* 모달 닫고, 모달 내부 인풋 요소들 비우기 */
   modal_bg.classList.remove("pop_modal");
   modal_allInput.forEach((input) => {
     input.value = "";
