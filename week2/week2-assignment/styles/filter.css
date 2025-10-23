@@ -12,7 +12,8 @@ main {
   min-width: 80%;
   padding: 2rem;
   border-radius: 0.5rem;
-  background-color: white;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-section);
 }
 
 /* filter 섹션 그리드 제어 */
@@ -54,13 +55,12 @@ main {
 .filter__btn button {
   padding: 0.5rem 0;
   border-radius: 0.5rem;
-  background-color: #008080;
-  color: white;
+  background-color: var(--color-main);
+  color: var(--color-white);
 }
 
 .filter__btn button:hover {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-bg-primary);
+  background-color: var(--color-btn-hover);
 }
 
 .filter__grid h3 {
@@ -70,14 +70,14 @@ main {
 
 .filter h2 {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .filter__grid input,
 .filter__grid select {
   height: 2rem;
   padding: 0 0.5rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   outline: none;
   transition: all 0.5s ease;
@@ -85,5 +85,5 @@ main {
 
 .filter__grid input:focus,
 .filter__grid select:focus {
-  border-color: var(--color-bg-primary);
+  border-color: var(--color-main);
 }

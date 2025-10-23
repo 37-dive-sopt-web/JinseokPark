@@ -8,14 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+KR:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap"
       rel="stylesheet"
     />
     <title>웹계인 관리 페이지</title>
   </head>
   <body>
     <header>
-      <div class="header__imoticon"><p>👽</p></div>
+      <div class="header__imoticon">
+        <img src="./images/web_alien.png" alt="웹계인 이미지" />
+      </div>
       <div class="header__main"><h1>웹계인 관리 페이지</h1></div>
       <div class="header__text"><p>🚀 DIVE SOPT 37기 WEB 박진석</p></div>
     </header>
@@ -56,23 +58,23 @@
           <div class="filter__second">
             <div class="filter__team filter__item">
               <h3>금잔디조</h3>
-              <input type="text" placeholder="금잔디조를 입력하세요 (1~9)" />
+              <input type="number" placeholder="금잔디조를 입력하세요 (1~9)" />
             </div>
             <div class="filter__age filter__item">
               <h3>나이</h3>
-              <input type="text" placeholder="나이를 입력하세요" />
+              <input type="number" placeholder="나이를 입력하세요" />
             </div>
           </div>
         </div>
         <div class="filter__btn">
-          <button class="btn_submit">적용</button>
-          <button class="btn_reset">초기화</button>
+          <button type="button" class="btn_submit">적용</button>
+          <button type="button" class="btn_reset">초기화</button>
         </div>
       </section>
 
       <section class="member_list">
         <div class="member_list__header">
-          <h3>37기 웹 파트 목록</h3>
+          <h2>37기 웹 파트 목록</h2>
           <div class="member_list__btnGroup">
             <button class="btn_delete">선택 삭제</button>
             <button class="btn_modal">추가</button>
@@ -159,7 +161,7 @@
                 <h4>금잔디조</h4>
                 <input
                   class="modal__team"
-                  type="text"
+                  type="number"
                   placeholder="금잔디조를 입력하세요(1~9)"
                 />
               </div>
@@ -167,7 +169,7 @@
                 <h4>나이</h4>
                 <input
                   class="modal__age"
-                  type="text"
+                  type="number"
                   placeholder="나이를 입력하세요"
                 />
               </div>

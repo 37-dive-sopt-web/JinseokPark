@@ -5,12 +5,25 @@
 @import url("./modal.css");
 
 :root {
-  --color-bg-primary: #008080;
-  --color-bg-secondary: #b2dfdb;
-  --color-text-white: #fffef5;
+  --color-main: #3b82f6;
+  --color-main-light: #eff6ff;
+  --color-point: #f97316;
+  --color-white: #ffffff;
+  --color-black: #1f2937;
+
+  --color-bg-primary: #ffffff;
+  --color-bg-section: #f9fafb;
+  --color-border: #e5e7eb;
+
+  --color-text-primary: #1f2937;
+
+  --color-btn-hover: #2563eb;
 }
 
 body {
-  background-color: azure;
-  font-family: "Noto Sans KR", sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

@@ -3,14 +3,23 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   height: 5rem;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-white);
+  background-color: var(--color-main);
+  color: var(--color-white);
 }
 
 header div {
   display: flex;
   justify-content: center;
+}
+
+.header__imoticon img {
+  width: 4rem;
+  height: 3.5rem;
+}
+
+.header__main h1 {
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .header__text p {
