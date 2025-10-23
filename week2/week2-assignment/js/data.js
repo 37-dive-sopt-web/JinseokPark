@@ -1,4 +1,4 @@
-const memberData = [
+export const memberData = [
   {
     id: 1,
     name: "권동희",
@@ -280,5 +280,3 @@ const memberData = [
     age: 23,
   },
 ];
-
-export default memberData;
