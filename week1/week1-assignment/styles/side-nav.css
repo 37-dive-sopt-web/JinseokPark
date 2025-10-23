@@ -3,6 +3,7 @@
 .side-nav {
   display: flex;
   justify-content: center;
+  scroll-behavior: smooth;
 }
 
 .side-nav ul {
@@ -41,6 +42,7 @@
 }
 
 .side-nav a {
+  display: block;
   color: gray;
 }
 
