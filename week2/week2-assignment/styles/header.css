@@ -25,3 +25,14 @@ header div {
 .header__text p {
   font-size: 0.8rem;
 }
+
+@media (max-width: 600px) {
+  .header__imoticon img,
+  .header__text p {
+    display: none;
+  }
+
+  .header__main h1 {
+    font-size: 1.2rem;
+  }
+}

@@ -9,7 +9,7 @@ main {
 /* filter 섹션 CSS 스타일링 */
 
 .filter {
-  min-width: 80%;
+  width: 80vw;
   padding: 2rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-border);
@@ -86,4 +86,14 @@ main {
 .filter__grid input:focus,
 .filter__grid select:focus {
   border-color: var(--color-main);
+}
+
+@media (max-width: 965px) {
+  .filter__first {
+    grid-template-columns: 1fr;
+  }
+
+  .filter__second {
+    grid-template-columns: 1fr;
+  }
 }

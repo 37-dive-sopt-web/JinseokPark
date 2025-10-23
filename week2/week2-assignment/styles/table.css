@@ -1,5 +1,5 @@
 .member_list {
-  min-width: 80%;
+  width: 80vw;
   margin: 2rem 0;
   padding: 2rem;
   border: 1px solid var(--color-border);
@@ -36,7 +36,12 @@
 
 .member_list__table {
   width: 100%;
+  min-width: 50rem;
   border: 1px solid var(--color-border);
+}
+
+.table_wrapper {
+  overflow-x: auto;
 }
 
 .member_list__table thead {
