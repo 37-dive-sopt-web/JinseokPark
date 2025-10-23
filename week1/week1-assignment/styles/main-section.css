@@ -1,6 +1,6 @@
 /* nav와 본문이 들어갈 부분 그리드 구조 스타일링 */
 
-.main-section {
+.grid_section {
   display: grid;
   grid-template-columns: 17rem 1fr;
 }
@@ -15,7 +15,7 @@ main {
 
 /* Hero Section CSS Style */
 
-.main__hero-section {
+.main__hero {
   display: flex;
   align-items: flex-end;
   min-height: 21rem;
@@ -23,7 +23,7 @@ main {
   background-color: #efefef;
 }
 
-.main__hero-section img {
+.main__hero img {
   width: 12rem;
   height: 12rem;
   margin-bottom: 2rem;
@@ -33,23 +33,23 @@ main {
   object-fit: cover;
 }
 
-.main__hero-section img:hover {
+.main__hero img:hover {
   transform: scale(1.05);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.main__hero-section div {
+.main__hero div {
   padding-bottom: 1rem;
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
 
-.main__hero-section h2 {
+.main__hero h2 {
   font-size: 2rem;
   line-height: 4rem;
 }
 
-.main__hero-section button {
+.main__hero button {
   margin-top: 1.2rem;
   margin-right: 0.5rem;
   padding: 0.7rem 1.5rem;
@@ -60,37 +60,37 @@ main {
   transition: all 0.3s ease;
 }
 
-.main__hero-section button:hover {
+.main__hero button:hover {
   transform: translateY(-0.3rem) scale(1.05);
 }
 
-.main__hero-section button:nth-of-type(1) {
+.main__hero button:nth-of-type(1) {
   background-color: #20b2aa;
 }
 
-.main__hero-section button:nth-of-type(2) {
+.main__hero button:nth-of-type(2) {
   background-color: #ff7f50;
 }
 
 /* Skills & interest CSS style */
 
-.main__skills-interest {
+.main__skills {
   background-color: rgba(162, 196, 196, 0.3);
 }
 
-.main__skills-interest h3 {
+.main__skills h3 {
   padding: 1rem 0 0 1.5rem;
   font-size: 1.5rem;
 }
 
-.main__skills-interest ul {
+.main__skills ul {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem 1.5rem;
   gap: 1rem;
 }
 
-.main__skills-interest li {
+.main__skills li {
   padding: 0.5rem 1.2rem;
   border-radius: 1.2rem;
   color: aliceblue;
@@ -103,7 +103,7 @@ main {
   background-color: rgba(162, 196, 196, 0.7);
 }
 
-.main__card-section h3 {
+.main__card-section > h3 {
   padding: 2rem 0 0 2rem;
   font-size: 1.5rem;
 }
@@ -135,12 +135,12 @@ main {
   object-fit: cover;
 }
 
-.card__title-like {
+.card__title {
   display: flex;
   justify-content: space-between;
 }
 
-.card__title-like h3 {
+.card__title h3 {
   margin-top: 0.7rem;
   padding-left: 0.8rem;
   font-size: 1.2rem;
@@ -152,7 +152,7 @@ main {
   color: gray;
 }
 
-.card__title-like button {
+.card__title button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,11 +172,11 @@ main {
   transition: all 0.3s ease;
 }
 
-.card__title-like button:hover {
+.card__title button:hover {
   background-color: pink;
 }
 
-.card__title-like button:hover i {
+.card__title button:hover i {
   color: hotpink;
 }
 

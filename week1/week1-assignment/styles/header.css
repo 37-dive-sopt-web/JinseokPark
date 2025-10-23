@@ -19,37 +19,37 @@ header nav {
   flex: 1;
 }
 
-.header_logo {
+.header__logo {
   display: flex;
   align-items: center;
 }
 
-.header_logo img {
+.header__logo img {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
 }
 
-.header_name {
+.header__name {
   text-align: center;
 }
 
-.header_name h1 {
+.header__name h1 {
   font-size: 1.2rem;
 }
 
-.header_name span {
+.header__name span {
   font-size: 1rem;
   color: gray;
 }
 
-.header_social-icon {
+.header__social {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
 
-.header_social-icon a {
+.header__social a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,20 +59,20 @@ header nav {
   background-color: #008080;
 }
 
-.header_social-icon i {
+.header__social i {
   color: white;
   font-size: 1.2rem;
 }
 
-.header_social-icon a:hover {
+.header__social a:hover {
   border: 1px solid #008080;
   background-color: whitesmoke;
 }
 
-.header_social-icon a:hover i {
+.header__social a:hover i {
   color: #008080;
 }
 
-.header_social-icon img {
+.header__social img {
   height: 1.2rem;
 }
