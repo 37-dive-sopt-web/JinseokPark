@@ -88,6 +88,12 @@ main {
   border-color: var(--color-main);
 }
 
+.filter__no-results {
+  text-align: center;
+  padding: 2rem;
+  font-weight: 500;
+}
+
 @media (max-width: 965px) {
   .filter__first {
     grid-template-columns: 1fr;

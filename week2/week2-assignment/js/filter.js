@@ -26,8 +26,19 @@ export function filterMember() {
     });
   });
 
-  tbody.innerHTML = "";
-  filtered_member.forEach(renderMembers);
+  if (filtered_member.length === 0) {
+    tbody.innerHTML = "";
+    tbody.innerHTML = `
+    <tr>
+      <td colspan="8" class="filter__no-results">
+        검색 결과가 없습니다
+      </td>
+    </tr>
+  `;
+  } else {
+    tbody.innerHTML = "";
+    filtered_member.forEach(renderMembers);
+  }
 }
 
 /* 필터링 초기화 - 필터 인풋 다 비우고, localStorage 데이터 렌더링 */
