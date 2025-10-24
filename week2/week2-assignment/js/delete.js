@@ -1,7 +1,7 @@
 /* 선택 삭제 기능 구현 */
 
 import { renderMembers } from "./render.js";
-import { tbody, DATA_KEY, getMembers } from "./dom.js";
+import { tbody, DATA_KEY, getMembers, select_all } from "./dom.js";
 
 export function deleteMember() {
   const checked_box = tbody.querySelectorAll("input[type='checkbox']:checked");
@@ -20,5 +20,7 @@ export function deleteMember() {
   /* localStorage 업데이트, 바뀐 멤버 배열로 렌더링 */
   localStorage.setItem(DATA_KEY, JSON.stringify(edit_members));
   tbody.innerHTML = "";
+  select_all.checked = false;
+  select_all.indeterminate = false;
   edit_members.forEach(renderMembers);
 }
