@@ -22,7 +22,9 @@ export function filterMember() {
   const filtered_member = members.filter((member) => {
     return active_filter.every((key) => {
       /* active_filter 배열에 담긴 모든 조건을 만족하게 하도록 every 사용 */
-      return String(member[key]).includes(filter_input[key].value);
+      const member_value = String(member[key]).toLowerCase();
+      const filter_value = String(filter_input[key].value).toLowerCase();
+      return member_value.includes(filter_value);
     });
   });
 
