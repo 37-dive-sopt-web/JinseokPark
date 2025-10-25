@@ -10,7 +10,7 @@
 }
 
 main {
-  overflow: hidden;
+  min-width: 0;
 }
 
 /* Hero Section CSS Style */
