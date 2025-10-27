@@ -1,0 +1,15 @@
+/* Footer CSS style */
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: rgba(162, 196, 196, 1);
+}
+
+footer p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: whitesmoke;
+}

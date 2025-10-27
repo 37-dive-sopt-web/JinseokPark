@@ -1,0 +1,232 @@
+/* nav와 본문이 들어갈 부분 그리드 구조 스타일링 */
+
+.grid_section {
+  display: grid;
+  grid-template-columns: 17rem 1fr;
+}
+
+.side-nav {
+  background-color: #f4f4f4;
+}
+
+main {
+  min-width: 0;
+}
+
+/* Hero Section CSS Style */
+
+.main__hero {
+  display: flex;
+  align-items: flex-end;
+  min-height: 21rem;
+  padding-left: 3rem;
+  background-color: #efefef;
+}
+
+.main__hero img {
+  width: 12rem;
+  height: 12rem;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.main__hero img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.main__hero div {
+  padding-bottom: 1rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.main__hero h2 {
+  font-size: 2rem;
+  line-height: 4rem;
+}
+
+.main__hero button {
+  margin-top: 1.2rem;
+  margin-right: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.main__hero button:hover {
+  transform: translateY(-0.3rem) scale(1.05);
+}
+
+.main__hero button:nth-of-type(1) {
+  background-color: #20b2aa;
+}
+
+.main__hero button:nth-of-type(2) {
+  background-color: #ff7f50;
+}
+
+/* Skills & interest CSS style */
+
+.main__skills {
+  background-color: rgba(162, 196, 196, 0.3);
+}
+
+.main__skills h3 {
+  padding: 1rem 0 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.main__skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+
+.main__skills li {
+  padding: 0.5rem 1.2rem;
+  border-radius: 1.2rem;
+  color: aliceblue;
+  background-color: #008080;
+}
+
+/* Card Section CSS style */
+
+.main__card-section {
+  background-color: rgba(162, 196, 196, 0.7);
+}
+
+.main__card-section > h3 {
+  padding: 2rem 0 0 2rem;
+  font-size: 1.5rem;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  margin: 1.5rem 0 0 2rem;
+  padding: 0 2rem 1.5rem 0;
+  gap: 2rem;
+}
+
+.card {
+  overflow: hidden;
+  padding-bottom: 2rem;
+  border-radius: 2rem;
+  background-color: white;
+  transition: all 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+}
+
+.card__title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__title h3 {
+  margin-top: 0.7rem;
+  padding-left: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.card p {
+  padding: 0 1rem 0 1rem;
+  margin-top: 2rem;
+  color: gray;
+}
+
+.card__title button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #efefef;
+  transition: all 0.3s ease;
+}
+
+.card i {
+  font-size: 1rem;
+  color: gray;
+  transition: all 0.3s ease;
+}
+
+.card__title button:hover {
+  background-color: pink;
+}
+
+.card__title button:hover i {
+  color: hotpink;
+}
+
+/* 사진 리스트 CSS style */
+
+.main__picture {
+  padding: 2rem;
+  background-color: #f0f8ff;
+}
+
+.main__picture h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.picture-list {
+  display: flex;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.picture-group {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  animation: scrolling 30s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.picture-list:hover .picture-group {
+  animation-play-state: paused;
+}
+
+.picture-list img {
+  width: 16rem;
+  height: 10rem;
+  border-radius: 1rem;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.picture-list img:hover {
+  transform: scale(1.1);
+}

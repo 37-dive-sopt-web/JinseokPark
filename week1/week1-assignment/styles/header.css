@@ -1,0 +1,78 @@
+/* Header CSS style */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4.5rem;
+  padding: 0 1.5rem;
+  background-color: rgb(245, 245, 245);
+  z-index: 10;
+}
+
+header div,
+header nav {
+  flex: 1;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.header__name {
+  text-align: center;
+}
+
+.header__name h1 {
+  font-size: 1.2rem;
+}
+
+.header__name span {
+  font-size: 1rem;
+  color: gray;
+}
+
+.header__social {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.header__social a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #008080;
+}
+
+.header__social i {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header__social a:hover {
+  border: 1px solid #008080;
+  background-color: whitesmoke;
+}
+
+.header__social a:hover i {
+  color: #008080;
+}
+
+.header__social img {
+  height: 1.2rem;
+}
