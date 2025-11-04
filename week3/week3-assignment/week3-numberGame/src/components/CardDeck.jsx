@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { theme } from "../theme";
-import { useGameLogic } from "../hooks/useGameLogic";
 
 const cardDeck1 = css`
   display: grid;
@@ -42,11 +41,7 @@ const cardBack = css`
   color: white;
 `;
 
-function CardDeck({ handleCountUpdate }) {
-  const { deckInfo, flipCard, matchedCard, handleCardFlip } = useGameLogic({
-    handleCountUpdate,
-  });
-
+function CardDeck({ deckInfo, flipCard, matchedCard, handleCardFlip }) {
   return (
     <div>
       {deckInfo.status === "ready" && (

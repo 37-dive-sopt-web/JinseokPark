@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { theme } from "../theme";
 import { useState } from "react";
+import { useGameLogic } from "../hooks/useGameLogic";
 import CardDeck from "./CardDeck.jsx";
 
 const gameBoard = css`
@@ -41,6 +42,11 @@ const board__title = css`
     font-size: 1.5rem;
     background-color: ${theme.colors.point};
     color: white;
+    transition: all 0.5s ease;
+  }
+
+  button:hover {
+    transform: translateY(-0.5rem);
   }
 `;
 
@@ -118,9 +124,30 @@ const board__history = css`
 
 const GameBoard = () => {
   const [count, setCount] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(45);
+  const [isTimeUp, setIsTimeUp] = useState(false);
 
   const handleCountUpdate = (count) => {
     setCount(count);
+  };
+
+  const handleTimeUpdate = (time) => {
+    setTimeLeft(time);
+  };
+
+  const handleTimeUp = (isTimeUp) => {
+    setIsTimeUp(isTimeUp);
+  };
+
+  const { deckInfo, flipCard, matchedCard, handleCardFlip, generateDeck } =
+    useGameLogic({
+      handleCountUpdate,
+      handleTimeUpdate,
+      handleTimeUp,
+    });
+
+  const handleResetGame = () => {
+    generateDeck(1);
   };
 
   return (
@@ -129,10 +156,15 @@ const GameBoard = () => {
         <div>
           <div css={board__title}>
             <h3>게임 보드</h3>
-            <button>게임 리셋</button>
+            <button onClick={handleResetGame}>게임 리셋</button>
           </div>
           <div css={cardDeck}>
-            <CardDeck handleCountUpdate={handleCountUpdate} />
+            <CardDeck
+              deckInfo={deckInfo}
+              flipCard={flipCard}
+              matchedCard={matchedCard}
+              handleCardFlip={handleCardFlip}
+            />
           </div>
         </div>
         <div css={board__control}>
@@ -142,7 +174,7 @@ const GameBoard = () => {
           <div css={board__score}>
             <div>
               <p>남은 시간</p>
-              <p>45.00</p>
+              <p>{timeLeft.toFixed(2)}</p>
             </div>
             <div>
               <p>성공한 짝</p>
