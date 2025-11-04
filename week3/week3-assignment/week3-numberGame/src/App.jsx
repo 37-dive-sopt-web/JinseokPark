@@ -3,6 +3,7 @@ import "./App.css";
 import { Global, css, ThemeProvider } from "@emotion/react";
 import { theme } from "./theme.js";
 import Header from "./components/Header.jsx";
+import GameBoard from "./components/GameBoard.jsx";
 
 const globalStyles = css`
   @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap");
@@ -26,6 +27,7 @@ const globalStyles = css`
 
   h1,
   h2,
+  h3,
   p {
     margin: 0;
   }
@@ -36,6 +38,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
       <Header />
+      <GameBoard />
     </ThemeProvider>
   );
 }
