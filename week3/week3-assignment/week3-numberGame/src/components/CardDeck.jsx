@@ -35,14 +35,14 @@ function buildDeck(level = 1) {
 
 const cardDeck1 = css`
   display: grid;
-  grid-template-columns: repeat(4, 10rem);
+  grid-template-columns: repeat(4, 18rem);
   gap: 1rem;
 `;
 
 const cardInnerStyle = (isFlipped) => css`
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  width: 18rem;
+  height: 18rem;
   cursor: pointer;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -55,7 +55,7 @@ const cardFaceStyle = css`
   height: 100%;
   backface-visibility: hidden;
   border-radius: 0.8rem;
-  line-height: 10rem;
+  line-height: 18rem;
   text-align: center;
   font-size: 2.5rem;
 `;

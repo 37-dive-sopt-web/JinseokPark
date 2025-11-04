@@ -4,8 +4,9 @@ export const theme = {
     secondary: "#eff6ff",
     text: "#1f2937",
     background: "#ffffff",
-    section: "#f9fafb",
+    section: "#60a5fa",
     gray: "#aaaaaa",
     hover: "#2563eb",
+    point: "#F97316",
   },
 };
