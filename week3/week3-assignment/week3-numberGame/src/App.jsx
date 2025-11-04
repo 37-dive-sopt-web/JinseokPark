@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+/** @jsxImportSource @emotion/react */
+import { Global, css, ThemeProvider } from "@emotion/react";
+import { theme } from "./theme.js";
+import Header from "./components/Header.jsx";
+
+const globalStyles = css`
+  @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap");
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: ${theme.colors.background};
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-size: 1.6rem;
+    color: ${theme.colors.text};
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  p {
+    margin: 0;
+  }
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <Global styles={globalStyles} />
+      <Header />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
