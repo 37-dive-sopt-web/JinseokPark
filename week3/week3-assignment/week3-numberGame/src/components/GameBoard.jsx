@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { theme } from "../theme";
+import { useState } from "react";
 import CardDeck from "./CardDeck.jsx";
 
 const gameBoard = css`
@@ -116,6 +117,12 @@ const board__history = css`
 `;
 
 const GameBoard = () => {
+  const [count, setCount] = useState(0);
+
+  const handleCountUpdate = (count) => {
+    setCount(count);
+  };
+
   return (
     <div css={wrapper}>
       <div css={gameBoard}>
@@ -125,7 +132,7 @@ const GameBoard = () => {
             <button>게임 리셋</button>
           </div>
           <div css={cardDeck}>
-            <CardDeck />
+            <CardDeck handleCountUpdate={handleCountUpdate} />
           </div>
         </div>
         <div css={board__control}>
@@ -139,11 +146,11 @@ const GameBoard = () => {
             </div>
             <div>
               <p>성공한 짝</p>
-              <p>0/8</p>
+              <p>{count}/8</p>
             </div>
             <div>
               <p>남은 짝</p>
-              <p>8</p>
+              <p>{8 - count}</p>
             </div>
           </div>
           <div css={board__notice}>
