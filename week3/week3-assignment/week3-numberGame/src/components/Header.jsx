@@ -44,14 +44,14 @@ const btnGroup = css`
   }
 `;
 
-const Header = () => {
+const Header = ({ setView }) => {
   return (
     <div css={wrapper}>
       <div css={header}>
         <h1>숫자 카드 짝 맞추기</h1>
         <div css={btnGroup}>
-          <button>게임</button>
-          <button>랭킹</button>
+          <button onClick={() => setView("game")}>게임</button>
+          <button onClick={() => setView("ranking")}>랭킹</button>
         </div>
       </div>
     </div>

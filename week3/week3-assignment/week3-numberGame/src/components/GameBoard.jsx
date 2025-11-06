@@ -164,6 +164,19 @@ const GameBoard = () => {
 
   useEffect(() => {
     if (count === 8 || isTimeUp) {
+      if (count === 8 && !isTimeUp) {
+        const clearTime = 45 - timeLeft;
+        const newRecord = {
+          level: deckInfo.level,
+          time: clearTime,
+          date: new Date().toISOString(),
+        };
+
+        const ranking = JSON.parse(localStorage.getItem("rankings") || "[]");
+        ranking.push(newRecord);
+        localStorage.setItem("rankings", JSON.stringify(ranking));
+      }
+
       setIsModalOpen(true);
 
       const timer = setTimeout(() => {
