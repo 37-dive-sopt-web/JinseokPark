@@ -51,10 +51,10 @@ const cardFaceStyle = (level) => css`
   font-size: 2.5rem;
 `;
 
-const cardFront = css`
-  background-color: ${theme.colors.secondary};
-  color: ${theme.colors.text};
-  border: 1px solid ${theme.colors.main};
+const cardFront = (isMatched) => css`
+  background-color: ${isMatched ? theme.colors.point : theme.colors.secondary};
+  color: ${isMatched ? theme.colors.secondary : theme.colors.text};
+  border: 1px solid ${isMatched ? theme.colors.point : theme.colors.main};
   transform: rotateY(180deg);
 `;
 
@@ -70,6 +70,7 @@ function CardDeck({ deckInfo, flipCard, matchedCard, handleCardFlip }) {
         <div>
           <div css={cardDeck(deckInfo.level)}>
             {deckInfo.data.map((card) => {
+              const isMatched = matchedCard.has(card.id);
               const isFlipped =
                 flipCard.some((c) => c.id === card.id) ||
                 matchedCard.has(card.id);
@@ -80,7 +81,9 @@ function CardDeck({ deckInfo, flipCard, matchedCard, handleCardFlip }) {
                   css={cardInnerStyle(isFlipped, deckInfo.level)}
                   onClick={() => handleCardFlip(card)}
                 >
-                  <div css={[cardFaceStyle(deckInfo.level), cardFront]}>
+                  <div
+                    css={[cardFaceStyle(deckInfo.level), cardFront(isMatched)]}
+                  >
                     {card.value}
                   </div>
                   <div css={[cardFaceStyle(deckInfo.level), cardBack]}>?</div>
