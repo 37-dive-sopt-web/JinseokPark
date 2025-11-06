@@ -105,22 +105,41 @@ const board__level = css`
   border-radius: 0.8rem;
   border: none;
   color: ${theme.colors.main};
+  border-radius: 1.6rem;
 `;
 
 const board__history = css`
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 2rem;
-  color: white;
-  font-size: 2rem;
 
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${theme.colors.secondary};
-    color: ${theme.colors.main};
+  > p {
+    font-size: 2rem;
+    color: white;
   }
+`;
+
+const board__historyList = css`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.6rem;
+  border-radius: 1.6rem;
+  background-color: ${theme.colors.secondary};
+
+  > p {
+    color: ${theme.colors.main};
+    margin: auto;
+  }
+`;
+
+const board__historyItem = css`
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: ${theme.colors.main};
+  border-radius: 0.8rem;
 `;
 
 const GameBoard = () => {
@@ -135,6 +154,7 @@ const GameBoard = () => {
     timeLeft,
     isTimeUp,
     resetGame,
+    history,
   } = useGameLogic();
 
   const handleResetGame = useCallback(() => {
@@ -197,8 +217,17 @@ const GameBoard = () => {
           </div>
           <div css={board__history}>
             <p>최근 히스토리</p>
-            <div>
-              <p>아직 뒤집은 카드가 없어요</p>
+            <div css={board__historyList}>
+              {history.length === 0 ? (
+                <p>아직 뒤집은 카드가 없어요</p>
+              ) : (
+                history.map((ele) => (
+                  <div key={ele.id} css={board__historyItem}>
+                    <span>{`${ele.card1}, ${ele.card2}`}</span>
+                    <span>{ele.result}</span>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

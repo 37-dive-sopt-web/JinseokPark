@@ -20,6 +20,8 @@ export function useGameLogic() {
   const flipTimerRef = useRef(null);
   const gameTimerRef = useRef(null);
 
+  const [history, setHistory] = useState([]);
+
   const resetGame = useCallback((level = 1) => {
     const data = buildDeck(level);
     setDeckInfo({ status: "ready", data, level });
@@ -34,6 +36,7 @@ export function useGameLogic() {
     setTimeLeft(45);
     setIsTimeUp(false);
     setCount(0);
+    setHistory([]);
   }, []);
 
   const handleCardFlip = (card) => {
@@ -65,7 +68,22 @@ export function useGameLogic() {
         );
         setFlipCard([]);
         setIsLocked(false);
+
+        const newHistory = {
+          id: Date.now(),
+          card1: newflipCard[0].value,
+          card2: newflipCard[1].value,
+          result: "성공",
+        };
+        setHistory((prev) => [newHistory, ...prev].slice(0, 10));
       } else {
+        const newHistory = {
+          id: Date.now(),
+          card1: newflipCard[0].value,
+          card2: newflipCard[1].value,
+          result: "실패",
+        };
+        setHistory((prev) => [newHistory, ...prev].slice(0, 10));
         flipTimerRef.current = setTimeout(() => {
           setFlipCard([]);
           setIsLocked(false);
@@ -131,5 +149,6 @@ export function useGameLogic() {
     count,
     timeLeft,
     isTimeUp,
+    history,
   };
 }
