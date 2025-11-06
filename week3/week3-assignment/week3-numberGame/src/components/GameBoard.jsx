@@ -142,6 +142,18 @@ const board__historyItem = (result) => css`
   border-radius: 0.8rem;
 `;
 
+const board__scoreItem = css`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  p:nth-of-type(2) {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: ${theme.colors.main};
+  }
+`;
+
 const GameBoard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [level, setLevel] = useState(1);
@@ -222,17 +234,17 @@ const GameBoard = () => {
             <option value="3">Level 3</option>
           </select>
           <div css={board__score}>
-            <div>
+            <div css={board__scoreItem}>
               <p>남은 시간</p>
               <p>{timeLeft.toFixed(2)}</p>
             </div>
-            <div>
+            <div css={board__scoreItem}>
               <p>성공한 짝</p>
               <p>
                 {count}/{totalPairs}
               </p>
             </div>
-            <div>
+            <div css={board__scoreItem}>
               <p>남은 짝</p>
               <p>{totalPairs - count}</p>
             </div>

@@ -84,7 +84,12 @@ const Ranking = () => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("rankings") || "[]");
-    data.sort((a, b) => a.time - b.time);
+    data.sort((a, b) => {
+      if (a.level !== b.level) {
+        return b.level - a.level;
+      }
+      return a.time - b.time;
+    });
     setRankingData(data);
   }, []);
 
@@ -120,7 +125,7 @@ const Ranking = () => {
                   <td>{index + 1}위</td>
                   <td>Level {data.level}</td>
                   <td>{data.time.toFixed(2)}초</td>
-                  <td>{new Date(data.date).toLocaleDateString("ko-KR")}</td>
+                  <td>{new Date(data.date).toLocaleString("ko-KR")}</td>
                 </tr>
               ))}
             </tbody>
