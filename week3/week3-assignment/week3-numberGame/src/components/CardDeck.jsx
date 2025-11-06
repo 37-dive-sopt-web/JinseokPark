@@ -52,9 +52,9 @@ const cardFaceStyle = (level) => css`
 `;
 
 const cardFront = (isMatched) => css`
+  border: 1px solid ${isMatched ? theme.colors.point : theme.colors.main};
   background-color: ${isMatched ? theme.colors.point : theme.colors.secondary};
   color: ${isMatched ? theme.colors.secondary : theme.colors.text};
-  border: 1px solid ${isMatched ? theme.colors.point : theme.colors.main};
   transform: rotateY(180deg);
 `;
 

@@ -6,6 +6,9 @@ import { theme } from "../theme";
 const modalRoot = document.getElementById("modal");
 
 const modalOverlay = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,20 +16,17 @@ const modalOverlay = css`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const modalContent = css`
-  background-color: ${theme.colors.secondary};
   display: flex;
   flex-direction: column;
-  padding: 5rem 20rem;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 5rem 20rem;
   border-radius: 1.6rem;
+  background-color: ${theme.colors.secondary};
 
   h2 {
     font-size: 3rem;
@@ -37,10 +37,10 @@ const modalContent = css`
   }
 
   p:nth-of-type(2) {
-    color: ${theme.colors.main};
     margin-top: 2rem;
     font-size: 2.5rem;
     font-weight: 700;
+    color: ${theme.colors.main};
   }
 `;
 

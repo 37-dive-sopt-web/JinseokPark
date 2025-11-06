@@ -11,8 +11,8 @@ const gameBoard = css`
   grid-template-columns: auto 1fr;
   width: 80vw;
   padding: 4rem;
-  background-color: ${theme.colors.secondary};
   border-radius: 1.6rem;
+  background-color: ${theme.colors.secondary};
 `;
 
 const cardDeck = css`
@@ -21,9 +21,9 @@ const cardDeck = css`
 `;
 
 const wrapper = css`
-  width: 100vw;
   display: flex;
   justify-content: center;
+  width: 100vw;
   margin-top: 5rem;
 `;
 
@@ -40,8 +40,8 @@ const board__title = css`
     padding: 1rem 2rem;
     border-radius: 1.6rem;
     border: none;
-    font-size: 1.5rem;
     background-color: ${theme.colors.point};
+    font-size: 1.5rem;
     color: white;
     transition: all 0.5s ease;
   }
@@ -55,10 +55,10 @@ const board__control = css`
   display: grid;
   grid-template-rows: auto auto auto 1fr;
   gap: 3rem;
-  background-color: ${theme.colors.section};
   margin-left: 10rem;
   padding: 3rem;
   border-radius: 1.6rem;
+  background-color: ${theme.colors.section};
 `;
 
 const board__score = css`
@@ -89,9 +89,9 @@ const board__notice = css`
 
   div {
     padding: 3rem 1rem;
+    border-radius: 0.8rem;
     background-color: ${theme.colors.secondary};
     color: ${theme.colors.main};
-    border-radius: 0.8rem;
   }
 
   div > p {
@@ -102,10 +102,9 @@ const board__notice = css`
 const board__level = css`
   padding: 1rem;
   font-size: 2rem;
-  border-radius: 0.8rem;
+  border-radius: 1.6rem;
   border: none;
   color: ${theme.colors.main};
-  border-radius: 1.6rem;
 `;
 
 const board__history = css`
@@ -137,9 +136,9 @@ const board__historyItem = (result) => css`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  color: white;
-  background-color: ${result === "성공" ? theme.colors.main : theme.colors.red};
   border-radius: 0.8rem;
+  background-color: ${result === "성공" ? theme.colors.main : theme.colors.red};
+  color: white;
 `;
 
 const board__scoreItem = css`

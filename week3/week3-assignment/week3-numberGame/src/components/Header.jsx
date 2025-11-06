@@ -3,10 +3,10 @@ import { css } from "@emotion/react";
 import { theme } from "../theme";
 
 const wrapper = css`
-  width: 100vw;
   display: flex;
   justify-content: center;
   margin-top: 5rem;
+  width: 100vw;
 `;
 
 const header = css`

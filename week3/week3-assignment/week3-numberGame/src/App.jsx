@@ -1,4 +1,3 @@
-import "./App.css";
 /** @jsxImportSource @emotion/react */
 import { Global, css, ThemeProvider } from "@emotion/react";
 import { useState } from "react";

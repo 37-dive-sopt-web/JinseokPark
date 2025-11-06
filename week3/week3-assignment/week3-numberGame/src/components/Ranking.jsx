@@ -5,9 +5,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const wrapper = css`
-  width: 100vw;
   display: flex;
   justify-content: center;
+  width: 100vw;
   margin-top: 5rem;
 `;
 
@@ -17,8 +17,8 @@ const ranking = css`
   width: 80vw;
   min-height: 80rem;
   padding: 4rem;
-  background-color: ${theme.colors.secondary};
   border-radius: 1.6rem;
+  background-color: ${theme.colors.secondary};
 `;
 
 const ranking__title = css`
@@ -34,8 +34,8 @@ const ranking__title = css`
     padding: 1rem 2rem;
     border-radius: 1.6rem;
     border: none;
-    font-size: 1.5rem;
     background-color: ${theme.colors.point};
+    font-size: 1.5rem;
     color: white;
     transition: all 0.5s ease;
   }
@@ -47,9 +47,9 @@ const ranking__title = css`
 
 const ranking__board = css`
   width: 100%;
-  border-collapse: collapse;
   margin-top: 3rem;
   align-self: start;
+  border-collapse: collapse;
 
   thead tr {
     background-color: ${theme.colors.main};
@@ -58,8 +58,8 @@ const ranking__board = css`
 
   th,
   td {
-    text-align: center;
     padding: 1rem;
+    text-align: center;
   }
 
   tbody tr {
