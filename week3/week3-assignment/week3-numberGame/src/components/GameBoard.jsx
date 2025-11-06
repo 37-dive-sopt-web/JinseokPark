@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { theme } from "../theme";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useGameLogic } from "../hooks/useGameLogic";
 import CardDeck from "./CardDeck.jsx";
+import Modal from "./Modal.jsx";
 
 const gameBoard = css`
   display: grid;
@@ -123,32 +124,35 @@ const board__history = css`
 `;
 
 const GameBoard = () => {
-  const [count, setCount] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(45);
-  const [isTimeUp, setIsTimeUp] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCountUpdate = (count) => {
-    setCount(count);
-  };
+  const {
+    deckInfo,
+    flipCard,
+    matchedCard,
+    handleCardFlip,
+    count,
+    timeLeft,
+    isTimeUp,
+    resetGame,
+  } = useGameLogic();
 
-  const handleTimeUpdate = (time) => {
-    setTimeLeft(time);
-  };
+  const handleResetGame = useCallback(() => {
+    resetGame();
+    setIsModalOpen(false);
+  }, [resetGame]);
 
-  const handleTimeUp = (isTimeUp) => {
-    setIsTimeUp(isTimeUp);
-  };
+  useEffect(() => {
+    if (count === 8 || isTimeUp) {
+      setIsModalOpen(true);
 
-  const { deckInfo, flipCard, matchedCard, handleCardFlip, generateDeck } =
-    useGameLogic({
-      handleCountUpdate,
-      handleTimeUpdate,
-      handleTimeUp,
-    });
+      const timer = setTimeout(() => {
+        handleResetGame();
+      }, 3000);
 
-  const handleResetGame = () => {
-    generateDeck(1);
-  };
+      return () => clearTimeout(timer);
+    }
+  }, [count, isTimeUp, handleResetGame]);
 
   return (
     <div css={wrapper}>
@@ -199,6 +203,22 @@ const GameBoard = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <Modal>
+          {isTimeUp ? (
+            <>
+              <h2>실패입니다!</h2>
+              <p>제한 시간이 초과되었습니다!</p>
+            </>
+          ) : (
+            <>
+              <h2>축하합니다!</h2>
+              <p>모든 짝을 맞췄습니다!</p>
+            </>
+          )}
+          <p>3초 후 자동으로 새 게임을 시작해요</p>
+        </Modal>
+      )}
     </div>
   );
 };

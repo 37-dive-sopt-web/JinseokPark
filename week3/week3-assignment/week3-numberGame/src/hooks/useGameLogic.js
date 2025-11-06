@@ -1,11 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { buildDeck } from "../utils/utils.js";
 
-export function useGameLogic({
-  handleCountUpdate,
-  handleTimeUpdate,
-  handleTimeUp,
-}) {
+export function useGameLogic() {
   const [deckInfo, setDeckInfo] = useState({
     status: "idle",
     data: null,
@@ -15,13 +11,16 @@ export function useGameLogic({
   const [flipCard, setFlipCard] = useState([]);
   const [matchedCard, setMatchedCard] = useState(new Set());
   const [isLocked, setIsLocked] = useState(false);
+
+  const [count, setCount] = useState(0);
   const [timeLeft, setTimeLeft] = useState(45);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [isTimeUp, setIsTimeUp] = useState(false);
 
   const flipTimerRef = useRef(null);
   const gameTimerRef = useRef(null);
 
-  const generateDeck = (level = 1) => {
+  const resetGame = useCallback((level = 1) => {
     const data = buildDeck(level);
     setDeckInfo({ status: "ready", data, level });
     setFlipCard([]);
@@ -33,10 +32,9 @@ export function useGameLogic({
 
     setIsTimerRunning(false);
     setTimeLeft(45);
-
-    if (handleTimeUpdate) handleTimeUpdate(45);
-    if (handleTimeUp) handleTimeUp(false);
-  };
+    setIsTimeUp(false);
+    setCount(0);
+  }, []);
 
   const handleCardFlip = (card) => {
     if (
@@ -47,7 +45,7 @@ export function useGameLogic({
       return;
     }
 
-    if (matchedCard.size === 0 && flipCard.length === 0 && !isTimerRunning) {
+    if (!isTimerRunning && !isTimeUp) {
       setIsTimerRunning(true);
     }
 
@@ -77,17 +75,22 @@ export function useGameLogic({
   };
 
   useEffect(() => {
-    generateDeck(1);
+    resetGame(1);
     return () => {
       if (flipTimerRef.current) clearTimeout(flipTimerRef.current);
-      if (gameTimerRef.current) clearTimeout(gameTimerRef.current);
+      if (gameTimerRef.current) clearInterval(gameTimerRef.current);
     };
-  }, []);
+  }, [resetGame]);
 
   useEffect(() => {
-    const count = matchedCard.size / 2;
-    handleCountUpdate(count);
-  }, [matchedCard, handleCountUpdate]);
+    const newCount = matchedCard.size / 2;
+    setCount(newCount);
+
+    if (newCount === 8) {
+      setIsTimerRunning(false);
+      setIsLocked(true);
+    }
+  }, [matchedCard]);
 
   useEffect(() => {
     if (isTimerRunning) {
@@ -95,32 +98,38 @@ export function useGameLogic({
         setTimeLeft((prevTime) => {
           const newTime = prevTime - 0.01;
 
-          if (handleTimeUpdate) handleTimeUpdate(newTime);
-
           if (newTime <= 0) {
             clearInterval(gameTimerRef.current);
             setIsTimerRunning(false);
             setIsLocked(true);
-            if (handleTimeUp) handleTimeUp(true);
+            setIsTimeUp(true);
             return 0;
           }
 
           return newTime;
         });
       }, 10);
+    } else {
+      if (gameTimerRef.current) {
+        clearInterval(gameTimerRef.current);
+      }
     }
+
     return () => {
       if (gameTimerRef.current) {
         clearInterval(gameTimerRef.current);
       }
     };
-  }, [isTimerRunning, handleTimeUpdate, handleTimeUp]);
+  }, [isTimerRunning]);
 
   return {
     deckInfo,
     flipCard,
     matchedCard,
     handleCardFlip,
-    generateDeck,
+    resetGame,
+    count,
+    timeLeft,
+    isTimeUp,
   };
 }
