@@ -23,6 +23,8 @@ export function useGameLogic() {
   const [history, setHistory] = useState([]);
   const [totalPairs, setTotalPairs] = useState(8);
 
+  const [notice, setNotice] = useState(false);
+
   const resetGame = useCallback((level) => {
     const data = buildDeck(level);
     setDeckInfo({ status: "ready", data, level });
@@ -37,6 +39,7 @@ export function useGameLogic() {
     setIsTimeUp(false);
     setCount(0);
     setHistory([]);
+    setNotice(false);
 
     switch (level) {
       case 2:
@@ -59,6 +62,7 @@ export function useGameLogic() {
       flipCard.some((c) => c.id === card.id) ||
       matchedCard.has(card.id)
     ) {
+      setNotice(true);
       return;
     }
 
@@ -68,6 +72,7 @@ export function useGameLogic() {
 
     if (flipCard.length === 0) {
       setFlipCard([card]);
+      setNotice(false);
       return;
     }
 
@@ -75,6 +80,7 @@ export function useGameLogic() {
       setIsLocked(true);
       const newflipCard = [flipCard[0], card];
       setFlipCard(newflipCard);
+      setNotice(false);
 
       if (newflipCard[0].value === newflipCard[1].value) {
         setMatchedCard((prev) =>
@@ -165,5 +171,6 @@ export function useGameLogic() {
     isTimeUp,
     history,
     totalPairs,
+    notice,
   };
 }

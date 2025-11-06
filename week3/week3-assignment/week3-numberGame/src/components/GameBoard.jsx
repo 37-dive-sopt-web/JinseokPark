@@ -157,6 +157,7 @@ const GameBoard = () => {
     resetGame,
     history,
     totalPairs,
+    notice,
   } = useGameLogic();
 
   const handleResetGame = useCallback(() => {
@@ -239,7 +240,11 @@ const GameBoard = () => {
           <div css={board__notice}>
             <p> 안내 메시지</p>
             <div>
-              <p>카드를 눌러 게임을 시작</p>
+              {!notice ? (
+                <p>카드를 선택해주세요!</p>
+              ) : (
+                <p>선택할 수 없는 카드입니다!</p>
+              )}
             </div>
           </div>
           <div css={board__history}>
