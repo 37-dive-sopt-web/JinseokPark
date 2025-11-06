@@ -133,17 +133,18 @@ const board__historyList = css`
   }
 `;
 
-const board__historyItem = css`
+const board__historyItem = (result) => css`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
   color: white;
-  background-color: ${theme.colors.main};
+  background-color: ${result === "성공" ? theme.colors.main : theme.colors.red};
   border-radius: 0.8rem;
 `;
 
 const GameBoard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [level, setLevel] = useState(1);
 
   const {
     deckInfo,
@@ -155,16 +156,21 @@ const GameBoard = () => {
     isTimeUp,
     resetGame,
     history,
+    totalPairs,
   } = useGameLogic();
 
   const handleResetGame = useCallback(() => {
-    resetGame();
+    resetGame(level);
     setIsModalOpen(false);
-  }, [resetGame]);
+  }, [resetGame, level]);
 
   useEffect(() => {
-    if (count === 8 || isTimeUp) {
-      if (count === 8 && !isTimeUp) {
+    resetGame(level);
+  }, [level, resetGame]);
+
+  useEffect(() => {
+    if (count === totalPairs || isTimeUp) {
+      if (count === totalPairs && !isTimeUp) {
         const clearTime = 45 - timeLeft;
         const newRecord = {
           level: deckInfo.level,
@@ -185,7 +191,7 @@ const GameBoard = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [count, isTimeUp, handleResetGame]);
+  }, [count, isTimeUp, handleResetGame, totalPairs]);
 
   return (
     <div css={wrapper}>
@@ -205,8 +211,14 @@ const GameBoard = () => {
           </div>
         </div>
         <div css={board__control}>
-          <select css={board__level}>
+          <select
+            css={board__level}
+            value={level}
+            onChange={(e) => setLevel(Number(e.target.value))}
+          >
             <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
           </select>
           <div css={board__score}>
             <div>
@@ -215,11 +227,13 @@ const GameBoard = () => {
             </div>
             <div>
               <p>성공한 짝</p>
-              <p>{count}/8</p>
+              <p>
+                {count}/{totalPairs}
+              </p>
             </div>
             <div>
               <p>남은 짝</p>
-              <p>{8 - count}</p>
+              <p>{totalPairs - count}</p>
             </div>
           </div>
           <div css={board__notice}>
@@ -235,7 +249,7 @@ const GameBoard = () => {
                 <p>아직 뒤집은 카드가 없어요</p>
               ) : (
                 history.map((ele) => (
-                  <div key={ele.id} css={board__historyItem}>
+                  <div key={ele.id} css={board__historyItem(ele.result)}>
                     <span>{`${ele.card1}, ${ele.card2}`}</span>
                     <span>{ele.result}</span>
                   </div>

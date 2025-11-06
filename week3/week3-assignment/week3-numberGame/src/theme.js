@@ -8,5 +8,6 @@ export const theme = {
     gray: "#aaaaaa",
     hover: "#2563eb",
     point: "#F97316",
+    red: "#FF0000",
   },
 };

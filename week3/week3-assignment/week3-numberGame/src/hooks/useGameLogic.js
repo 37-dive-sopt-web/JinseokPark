@@ -21,8 +21,9 @@ export function useGameLogic() {
   const gameTimerRef = useRef(null);
 
   const [history, setHistory] = useState([]);
+  const [totalPairs, setTotalPairs] = useState(8);
 
-  const resetGame = useCallback((level = 1) => {
+  const resetGame = useCallback((level) => {
     const data = buildDeck(level);
     setDeckInfo({ status: "ready", data, level });
     setFlipCard([]);
@@ -33,10 +34,23 @@ export function useGameLogic() {
     if (gameTimerRef.current) clearInterval(gameTimerRef.current);
 
     setIsTimerRunning(false);
-    setTimeLeft(45);
     setIsTimeUp(false);
     setCount(0);
     setHistory([]);
+
+    switch (level) {
+      case 2:
+        setTotalPairs(12);
+        setTimeLeft(60);
+        break;
+      case 3:
+        setTotalPairs(18);
+        setTimeLeft(100);
+        break;
+      default:
+        setTotalPairs(8);
+        setTimeLeft(45);
+    }
   }, []);
 
   const handleCardFlip = (card) => {
@@ -104,11 +118,11 @@ export function useGameLogic() {
     const newCount = matchedCard.size / 2;
     setCount(newCount);
 
-    if (newCount === 8) {
+    if (newCount === totalPairs) {
       setIsTimerRunning(false);
       setIsLocked(true);
     }
-  }, [matchedCard]);
+  }, [matchedCard, totalPairs]);
 
   useEffect(() => {
     if (isTimerRunning) {
@@ -150,5 +164,6 @@ export function useGameLogic() {
     timeLeft,
     isTimeUp,
     history,
+    totalPairs,
   };
 }
