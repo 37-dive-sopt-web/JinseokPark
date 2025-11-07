@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "../theme";
 import { useState, useEffect, useCallback } from "react";
 import { useGameLogic } from "../hooks/useGameLogic";
+import { Wrapper, Title } from "../styles/CommonStyles.js";
 import CardDeck from "./CardDeck.jsx";
 import Modal from "./Modal.jsx";
 
@@ -18,37 +19,6 @@ const gameBoard = css`
 const cardDeck = css`
   padding: 5rem;
   margin-left: 5rem;
-`;
-
-const wrapper = css`
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  margin-top: 5rem;
-`;
-
-const board__title = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    font-size: 3rem;
-  }
-
-  button {
-    padding: 1rem 2rem;
-    border-radius: 1.6rem;
-    border: none;
-    background-color: ${theme.colors.point};
-    font-size: 1.5rem;
-    color: white;
-    transition: all 0.5s ease;
-  }
-
-  button:hover {
-    transform: translateY(-0.5rem);
-  }
 `;
 
 const board__control = css`
@@ -219,13 +189,13 @@ const GameBoard = () => {
   }, [count, isTimeUp, handleResetGame, totalPairs]);
 
   return (
-    <div css={wrapper}>
+    <Wrapper>
       <div css={gameBoard}>
         <div>
-          <div css={board__title}>
+          <Title>
             <h3>게임 보드</h3>
             <button onClick={handleResetGame}>게임 리셋</button>
-          </div>
+          </Title>
           <div css={cardDeck}>
             <CardDeck
               deckInfo={deckInfo}
@@ -307,7 +277,7 @@ const GameBoard = () => {
           <p>3초 후 자동으로 새 게임을 시작해요</p>
         </Modal>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

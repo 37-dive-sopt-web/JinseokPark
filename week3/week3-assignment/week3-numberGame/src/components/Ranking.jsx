@@ -3,13 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "../theme";
 import { useState } from "react";
 import { useEffect } from "react";
-
-const wrapper = css`
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  margin-top: 5rem;
-`;
+import { Wrapper, Title } from "../styles/CommonStyles";
 
 const ranking = css`
   display: grid;
@@ -19,30 +13,6 @@ const ranking = css`
   padding: 4rem;
   border-radius: 1.6rem;
   background-color: ${theme.colors.secondary};
-`;
-
-const ranking__title = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    font-size: 3rem;
-  }
-
-  button {
-    padding: 1rem 2rem;
-    border-radius: 1.6rem;
-    border: none;
-    background-color: ${theme.colors.point};
-    font-size: 1.5rem;
-    color: white;
-    transition: all 0.5s ease;
-  }
-
-  button:hover {
-    transform: translateY(-0.5rem);
-  }
 `;
 
 const ranking__board = css`
@@ -103,12 +73,12 @@ const Ranking = () => {
   };
 
   return (
-    <div css={wrapper}>
+    <Wrapper>
       <div css={ranking}>
-        <div css={ranking__title}>
+        <Title>
           <h3>랭킹 보드</h3>
           <button onClick={resetRecord}>기록 초기화</button>
-        </div>
+        </Title>
         {rankingData.length === 0 ? (
           <div css={ranking__empty}>
             <p>아직 기록이 없습니다</p>
@@ -136,7 +106,7 @@ const Ranking = () => {
           </table>
         )}
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
