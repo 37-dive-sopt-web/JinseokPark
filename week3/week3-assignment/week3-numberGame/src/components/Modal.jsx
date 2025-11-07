@@ -38,6 +38,13 @@ const modal__content = css`
 
   p:nth-of-type(2) {
     margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: ${theme.colors.point};
+  }
+
+  p:nth-of-type(3) {
+    margin-top: 2rem;
     font-size: 2.5rem;
     font-weight: 700;
     color: ${theme.colors.main};

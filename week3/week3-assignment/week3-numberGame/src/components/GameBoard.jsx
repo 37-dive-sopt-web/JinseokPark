@@ -154,9 +154,10 @@ const board__scoreItem = css`
 `;
 
 const GameBoard = () => {
-  // 모달 창 관리, 레벨 설정 state
+  // 모달 창 관리, 레벨 설정, 클리어 시간 state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [level, setLevel] = useState(1);
+  const [clearTimeRecord, setClearTimeRecord] = useState(0);
 
   const {
     deckInfo,
@@ -187,7 +188,13 @@ const GameBoard = () => {
   useEffect(() => {
     if (count === totalPairs || isTimeUp) {
       if (count === totalPairs && !isTimeUp) {
-        const clearTime = 45 - timeLeft;
+        let totalTime = 45;
+        if (deckInfo.level === 2) totalTime = 60;
+        if (deckInfo.level === 3) totalTime = 100;
+
+        const clearTime = totalTime - timeLeft;
+        setClearTimeRecord(clearTime);
+
         // 기록 객체 만들기
         const newRecord = {
           level: deckInfo.level,
@@ -294,6 +301,7 @@ const GameBoard = () => {
             <>
               <h2>축하합니다!</h2>
               <p>모든 짝을 맞췄습니다!</p>
+              <p>{clearTimeRecord.toFixed(2)}초만에 통과했어요!</p>
             </>
           )}
           <p>3초 후 자동으로 새 게임을 시작해요</p>
