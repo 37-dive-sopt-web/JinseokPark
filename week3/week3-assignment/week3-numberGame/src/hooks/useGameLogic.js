@@ -152,7 +152,7 @@ export function useGameLogic() {
     if (isTimerRunning) {
       gameTimerRef.current = setInterval(() => {
         setTimeLeft((prevTime) => {
-          const newTime = prevTime - 0.01;
+          const newTime = prevTime - 0.1;
 
           if (newTime <= 0) {
             clearInterval(gameTimerRef.current);
@@ -164,7 +164,7 @@ export function useGameLogic() {
 
           return newTime;
         });
-      }, 10);
+      }, 100);
     } else {
       if (gameTimerRef.current) {
         clearInterval(gameTimerRef.current);

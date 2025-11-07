@@ -271,7 +271,7 @@ const GameBoard = () => {
             <>
               <h2>축하합니다!</h2>
               <p>모든 짝을 맞췄습니다!</p>
-              <p>{clearTimeRecord.toFixed(2)}초만에 통과했어요!</p>
+              <span>{clearTimeRecord.toFixed(2)}초만에 통과했어요!</span>
             </>
           )}
           <p>3초 후 자동으로 새 게임을 시작해요</p>

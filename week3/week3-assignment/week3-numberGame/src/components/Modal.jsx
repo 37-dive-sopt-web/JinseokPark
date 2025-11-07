@@ -36,14 +36,14 @@ const modal__content = css`
     font-size: 2rem;
   }
 
-  p:nth-of-type(2) {
+  span {
     margin-top: 2rem;
     font-size: 2rem;
     font-weight: 700;
     color: ${theme.colors.point};
   }
 
-  p:nth-of-type(3) {
+  p:nth-of-type(2) {
     margin-top: 2rem;
     font-size: 2.5rem;
     font-weight: 700;
