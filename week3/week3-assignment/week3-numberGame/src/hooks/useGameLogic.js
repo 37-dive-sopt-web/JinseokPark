@@ -165,10 +165,6 @@ export function useGameLogic() {
           return newTime;
         });
       }, 100);
-    } else {
-      if (gameTimerRef.current) {
-        clearInterval(gameTimerRef.current);
-      }
     }
 
     return () => {
