@@ -50,6 +50,7 @@ const Header = ({ setView }) => {
       <div css={header}>
         <h1>숫자 카드 짝 맞추기</h1>
         <div css={btnGroup}>
+          {/* 버튼 클릭 시 App.js의 state 변경해서 조건부 렌더링 */}
           <button onClick={() => setView("game")}>게임</button>
           <button onClick={() => setView("ranking")}>랭킹</button>
         </div>

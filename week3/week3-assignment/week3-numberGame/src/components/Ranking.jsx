@@ -82,8 +82,11 @@ const ranking__empty = css`
 const Ranking = () => {
   const [rankingData, setRankingData] = useState([]);
 
+  // 처음 렌더링 될 때 실행
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("rankings") || "[]");
+
+    // localStorage에서 가져온 데이터 조건에 맞게 정렬
     data.sort((a, b) => {
       if (a.level !== b.level) {
         return b.level - a.level;
@@ -93,6 +96,7 @@ const Ranking = () => {
     setRankingData(data);
   }, []);
 
+  // 기록 빈 배열로 초기화
   const resetRecord = () => {
     localStorage.setItem("rankings", JSON.stringify([]));
     setRankingData([]);

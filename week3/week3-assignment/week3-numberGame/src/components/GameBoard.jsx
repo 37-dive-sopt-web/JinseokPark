@@ -154,6 +154,7 @@ const board__scoreItem = css`
 `;
 
 const GameBoard = () => {
+  // 모달 창 관리, 레벨 설정 state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [level, setLevel] = useState(1);
 
@@ -169,21 +170,25 @@ const GameBoard = () => {
     history,
     totalPairs,
     notice,
-  } = useGameLogic();
+  } = useGameLogic(); // 필요한 요소 가져오기
 
+  // 게임 초기화
   const handleResetGame = useCallback(() => {
     resetGame(level);
     setIsModalOpen(false);
   }, [resetGame, level]);
 
+  // 레벨 달라지면 게임 재시작
   useEffect(() => {
     resetGame(level);
   }, [level, resetGame]);
 
+  // 클리어하거나, 시간이 다 지나면 모달창 띄우기. (성공했다면 현재 기록 localStorage 저장)
   useEffect(() => {
     if (count === totalPairs || isTimeUp) {
       if (count === totalPairs && !isTimeUp) {
         const clearTime = 45 - timeLeft;
+        // 기록 객체 만들기
         const newRecord = {
           level: deckInfo.level,
           time: clearTime,
@@ -197,6 +202,7 @@ const GameBoard = () => {
 
       setIsModalOpen(true);
 
+      // 3초 뒤 게임 초기화
       const timer = setTimeout(() => {
         handleResetGame();
       }, 3000);
@@ -251,6 +257,7 @@ const GameBoard = () => {
           <div css={board__notice}>
             <p> 안내 메시지</p>
             <div>
+              {/* 선택했던 카드를 다시 선택하거나, 이미 매치된 카드 다시 클릭하면 안내 메시지 전달 */}
               {!notice ? (
                 <p>카드를 선택해주세요!</p>
               ) : (
@@ -277,6 +284,7 @@ const GameBoard = () => {
       </div>
       {isModalOpen && (
         <Modal>
+          {/* 시간 초과일 때, 성공일 때 Modal의 children 다르게 렌더링 */}
           {isTimeUp ? (
             <>
               <h2>실패입니다!</h2>

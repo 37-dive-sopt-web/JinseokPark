@@ -5,7 +5,7 @@ import { theme } from "../theme";
 
 const modalRoot = document.getElementById("modal");
 
-const modalOverlay = css`
+const modal = css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@ const modalOverlay = css`
   backdrop-filter: blur(5px);
 `;
 
-const modalContent = css`
+const modal__content = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,9 +45,10 @@ const modalContent = css`
 `;
 
 function Modal({ children }) {
+  // createPortal 사용 모달창 띄우기
   return ReactDOM.createPortal(
-    <div css={modalOverlay}>
-      <div css={modalContent}>{children}</div>
+    <div css={modal}>
+      <div css={modal__content}>{children}</div>
     </div>,
     modalRoot
   );
