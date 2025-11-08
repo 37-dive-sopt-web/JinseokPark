@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# .gitignore 파일 맨 아래에 .DS_Store 추가
+echo ".DS_Store" >> .gitignore
+
+# .gitignore 파일 맨 아래에 .vscode/ 추가
+echo ".vscode/" >> .gitignore
