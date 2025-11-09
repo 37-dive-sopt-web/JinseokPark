@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# .gitignore 파일 맨 아래에 .DS_Store 추가
+echo ".DS_Store" >> .gitignore
+
+# .gitignore 파일 맨 아래에 .vscode/ 추가
+echo ".vscode/" >> .gitignore
