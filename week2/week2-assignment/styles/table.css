@@ -1,0 +1,83 @@
+.member_list {
+  width: 80vw;
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-section);
+}
+
+.member_list__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.member_list__header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.member_list__btnGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.member_list__btnGroup button {
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-main);
+  color: var(--color-white);
+}
+
+.member_list__btnGroup button:hover {
+  background-color: var(--color-btn-hover);
+}
+
+.member_list__table {
+  width: 100%;
+  min-width: 50rem;
+  border: 1px solid var(--color-border);
+}
+
+.table_wrapper {
+  overflow-x: auto;
+}
+
+.member_list__table thead {
+  background-color: var(--color-main-light);
+}
+
+.table_row {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table_row th,
+.table_row td {
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.table_row th {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.table_row td {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.table_row input {
+  margin-left: 1rem;
+}
+
+.table_row a {
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+.table_row a:hover {
+  font-weight: 700;
+  color: var(--color-point);
+}

@@ -1,0 +1,27 @@
+@import url("./reset.css");
+@import url("./header.css");
+@import url("./filter.css");
+@import url("./table.css");
+@import url("./modal.css");
+
+:root {
+  --color-main: #3b82f6;
+  --color-main-light: #eff6ff;
+  --color-point: #f97316;
+  --color-white: #ffffff;
+
+  --color-bg-section: #f9fafb;
+  --color-border: #e5e7eb;
+
+  --color-text-primary: #1f2937;
+
+  --color-btn-hover: #2563eb;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

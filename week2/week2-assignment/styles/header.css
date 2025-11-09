@@ -1,0 +1,38 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 5rem;
+  background-color: var(--color-main);
+  color: var(--color-white);
+}
+
+header div {
+  display: flex;
+  justify-content: center;
+}
+
+.header__imoticon img {
+  width: 4rem;
+  height: 3.5rem;
+}
+
+.header__main h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.header__text p {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .header__imoticon img,
+  .header__text p {
+    display: none;
+  }
+
+  .header__main h1 {
+    font-size: 1.2rem;
+  }
+}
