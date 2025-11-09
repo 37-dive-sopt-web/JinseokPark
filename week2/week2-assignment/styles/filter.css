@@ -63,7 +63,7 @@ main {
   background-color: var(--color-btn-hover);
 }
 
-.filter_label {
+.filter__label {
   font-size: 0.8rem;
   font-weight: 600;
 }

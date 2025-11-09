@@ -13,24 +13,25 @@ import {
   member_input,
 } from "./dom.js";
 
+function closeModal() {
+  modal_bg.classList.remove("pop_modal");
+  modal_allInput.forEach((input) => {
+    input.value = "";
+  });
+}
+
 open_modalBtn.addEventListener("click", () => {
   modal_bg.classList.add("pop_modal");
 });
 
 close_modalBtn.addEventListener("click", () => {
-  modal_bg.classList.remove("pop_modal");
-  modal_allInput.forEach((input) => {
-    input.value = "";
-  });
+  closeModal();
 });
 
 /* 모달 뒤 배경 눌렀을 때 모달 닫기 & 모달 내부 인풋 비우기 */
 modal_bg.addEventListener("click", (event) => {
   if (event.target === modal_bg) {
-    modal_bg.classList.remove("pop_modal");
-    modal_allInput.forEach((input) => {
-      input.value = "";
-    });
+    closeModal();
   }
 });
 
@@ -55,8 +56,8 @@ function appendMember(event) {
     github: member_input.github.value,
     gender: member_input.gender.value,
     role: member_input.role.value,
-    codeReviewGroup: member_input.team.value,
-    age: member_input.age.value,
+    codeReviewGroup: Number(member_input.team.value),
+    age: Number(member_input.age.value),
   };
 
   const members = getMembers();
@@ -66,8 +67,5 @@ function appendMember(event) {
   members.forEach(renderMembers);
 
   /* 모달 닫고, 모달 내부 인풋 요소들 비우기 */
-  modal_bg.classList.remove("pop_modal");
-  modal_allInput.forEach((input) => {
-    input.value = "";
-  });
+  closeModal();
 }

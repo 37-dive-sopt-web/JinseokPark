@@ -21,15 +21,22 @@ export function filterMember() {
   /* 이전에 담은 active_filter 배열 기준으로 필터링한 멤버 배열 새로 만들기 */
   const filtered_member = members.filter((member) => {
     return active_filter.every((key) => {
-      /* active_filter 배열에 담긴 모든 조건을 만족하게 하도록 every 사용 */
-      const member_value = String(member[key]).toLowerCase();
-      const filter_value = String(filter_input[key].value).toLowerCase();
-      return member_value.includes(filter_value);
+      const member_value = member[key];
+      const filter_value = filter_input[key].value;
+
+      if (key === "age" || key === "codeReviewGroup") {
+        return member_value === Number(filter_value);
+      }
+
+      return String(member_value)
+        .toLowerCase()
+        .includes(String(filter_value).toLowerCase());
     });
   });
 
+  tbody.innerHTML = "";
+
   if (filtered_member.length === 0) {
-    tbody.innerHTML = "";
     tbody.innerHTML = `
     <tr>
       <td colspan="8" class="filter__no-results">
@@ -37,10 +44,10 @@ export function filterMember() {
       </td>
     </tr>
   `;
-  } else {
-    tbody.innerHTML = "";
-    filtered_member.forEach(renderMembers);
+    return;
   }
+
+  filtered_member.forEach(renderMembers);
 }
 
 /* 필터링 초기화 - 필터 인풋 다 비우고, localStorage 데이터 렌더링 */

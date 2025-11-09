@@ -1,16 +1,17 @@
 import { tbody } from "./dom.js";
+import { syncCheckbox } from "./checkbox.js";
+
+const table_key = [
+  "name",
+  "englishName",
+  "github",
+  "gender",
+  "role",
+  "codeReviewGroup",
+  "age",
+];
 
 export function renderMembers(member) {
-  const table_key = [
-    "name",
-    "englishName",
-    "github",
-    "gender",
-    "role",
-    "codeReviewGroup",
-    "age",
-  ];
-
   const tr = document.createElement("tr");
   tr.classList.add("table_row");
 
@@ -36,4 +37,5 @@ export function renderMembers(member) {
   });
 
   tbody.appendChild(tr);
+  syncCheckbox();
 }
