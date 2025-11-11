@@ -5,47 +5,20 @@ import {
 } from "../../styles/formLayout.css";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { useState } from "react";
-import type { ChangeEvent } from "react";
-
-interface FormData {
-  userId: string;
-  password: string;
-  name: string;
-  email: string;
-  age: number | undefined;
-}
+import { useSignUp } from "../../hooks/useSignUp";
 
 const SignUpPage = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>({
-    userId: "",
-    password: "",
-    name: "",
-    email: "",
-    age: undefined,
-  });
+  const {
+    step,
+    formData,
+    handleInputChange,
+    passwordConfirm,
+    handlePasswordConfirm,
+    handleSubmit,
+    isValid,
+  } = useSignUp();
 
-  const handleInputChange =
-    (field: keyof FormData) => (e: ChangeEvent<HTMLInputElement>) => {
-      const value = field === "age" ? Number(e.target.value) : e.target.value;
-      setFormData((prev) => ({ ...prev, [field]: value }));
-    };
-
-  const handleNextStep = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (step < 3) {
-      handleNextStep();
-      return;
-    }
-    alert("회원가입 완료");
-    console.log("최종 데이터:", JSON.stringify(formData));
-  };
-
+  // 단계에 따라 다른 폼 렌더링
   const stepForm = () => {
     switch (step) {
       case 1:
@@ -54,10 +27,10 @@ const SignUpPage = () => {
             <div className={formInputField}>
               <label>아이디</label>
               <Input
-                value={formData.userId}
+                value={formData.username}
                 placeholder="아이디를 입력해주세요"
                 type="text"
-                onChange={handleInputChange("userId")}
+                onChange={handleInputChange("username")}
               />
             </div>
           </>
@@ -77,10 +50,10 @@ const SignUpPage = () => {
             <div className={formInputField}>
               <label>비밀번호 확인</label>
               <Input
-                value={formData.password}
+                value={passwordConfirm}
                 placeholder="비밀번호를 한번 더 입력해주세요"
                 type="password"
-                onChange={() => console.log("1")}
+                onChange={handlePasswordConfirm}
               />
             </div>
           </>
@@ -127,9 +100,13 @@ const SignUpPage = () => {
         <h2>회원가입</h2>
         {stepForm()}
         {step < 3 ? (
-          <Button type="submit">다음</Button>
+          <Button type="submit" disabled={!isValid}>
+            다음
+          </Button>
         ) : (
-          <Button type="submit">가입하기</Button>
+          <Button type="submit" disabled={!isValid}>
+            가입하기
+          </Button>
         )}
       </form>
     </div>
