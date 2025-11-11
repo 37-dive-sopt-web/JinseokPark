@@ -6,8 +6,11 @@ import {
   formBtnContainer,
   formStyle,
 } from "../../styles/formLayout.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={formWrapper}>
       <form className={formStyle}>
@@ -32,7 +35,7 @@ const LoginPage = () => {
         </div>
         <div className={formBtnContainer}>
           <Button>로그인</Button>
-          <Button>회원가입</Button>
+          <Button onClick={() => navigate("/signup")}>회원가입</Button>
         </div>
       </form>
     </div>
