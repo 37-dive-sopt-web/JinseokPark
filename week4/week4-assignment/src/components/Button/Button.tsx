@@ -4,11 +4,12 @@ import { buttonStyle } from "./Button.css";
 interface ButtonProps {
   children: ReactNode;
   onClick?: () => void;
+  type?: "button" | "submit";
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
+const Button = ({ children, onClick, type }: ButtonProps) => {
   return (
-    <button type="button" className={buttonStyle} onClick={onClick}>
+    <button type={type} className={buttonStyle} onClick={onClick}>
       {children}
     </button>
   );

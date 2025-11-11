@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 import { InputStyle } from "./Input.css";
 
 interface InputProps {
-  value: string;
+  value: string | number | undefined;
   placeholder: string;
   type: "text" | "password" | "email" | "number";
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -11,7 +11,7 @@ interface InputProps {
 const Input = ({ value, placeholder, type = "text", onChange }: InputProps) => {
   return (
     <input
-      value={value}
+      value={String(value ?? "")}
       placeholder={placeholder}
       type={type}
       onChange={onChange}
