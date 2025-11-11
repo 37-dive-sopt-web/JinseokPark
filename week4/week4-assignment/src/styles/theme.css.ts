@@ -12,4 +12,14 @@ export const theme = createGlobalTheme(":root", {
     white: "#ffffff",
     gray: "#aaaaaa",
   },
+  fontSizes: {
+    small: "1.2rem",
+    medium: "1.6rem",
+    large: "2.0rem",
+  },
+  spacing: {
+    small: "0.8rem",
+    medium: "1.2rem",
+    large: "1.6rem",
+  },
 });
