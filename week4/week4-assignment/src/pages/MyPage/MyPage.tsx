@@ -7,14 +7,47 @@ import {
 } from "../../styles/formLayout.css";
 
 import { headerStyle, myPageStyle, idSectionStyle } from "./MyPage.css";
+import { useEffect, useState } from "react";
+import { useUserInfo } from "../../hooks/useUserInfo";
+import { getInfo } from "../../api/auth";
+
+interface UserData {
+  username: string;
+  name: string;
+  email: string;
+  age: number;
+}
 
 const MyPage = () => {
+  const [userData, setUserData] = useState<UserData>({
+    username: "",
+    name: "",
+    email: "",
+    age: 0,
+  });
+  const { userId } = useUserInfo();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!userId) return;
+
+      try {
+        const response = await getInfo(userId);
+        setUserData(response.data);
+      } catch (error) {
+        alert(`불러오기 실패. ${error}`);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className={myPageStyle}>
       <header className={headerStyle}>
         <div>
           <h2>마이페이지</h2>
-          <p>안녕하세요, 박진석님</p>
+          <p>안녕하세요, {userData.name}님</p>
         </div>
         <nav>
           <p>내 정보</p>
@@ -28,12 +61,12 @@ const MyPage = () => {
           <h2>내 정보</h2>
           <div className={idSectionStyle}>
             <p>아이디</p>
-            <p>doogy03</p>
+            <p>{userData.username}</p>
           </div>
           <div className={formInputField}>
             <label htmlFor="member-name">이름</label>
             <Input
-              value="박진석"
+              value={userData.name}
               placeholder="수정할 이름을 입력해주세요."
               type="text"
               onChange={() => console.log(1)}
@@ -43,7 +76,7 @@ const MyPage = () => {
           <div className={formInputField}>
             <label htmlFor="member-email">이메일</label>
             <Input
-              value="test@test.com"
+              value={userData.email}
               placeholder="수정할 이메일을 입력해주세요."
               type="text"
               onChange={() => console.log(1)}
@@ -53,7 +86,7 @@ const MyPage = () => {
           <div className={formInputField}>
             <label htmlFor="member-age">나이</label>
             <Input
-              value="23"
+              value={userData.age}
               placeholder="수정할 나이를 입력해주세요."
               type="text"
               onChange={() => console.log(1)}

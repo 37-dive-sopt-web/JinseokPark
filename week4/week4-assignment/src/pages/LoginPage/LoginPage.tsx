@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import type { LoginRequest } from "../../types/auth";
 import { logIn } from "../../api/auth";
-
+import { useUserInfo } from "../../hooks/useUserInfo";
 interface LoginData {
   username: string;
   password: string;
@@ -22,6 +22,7 @@ const LoginPage = () => {
     username: "",
     password: "",
   });
+  const { setUserId } = useUserInfo();
 
   const handleInputChange =
     (field: keyof LoginData) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +40,7 @@ const LoginPage = () => {
     try {
       const response = await logIn(data);
       alert(`로그인 성공! ${response.data.userId}`);
+      setUserId(response.data.userId);
       navigate("/mypage");
     } catch (error) {
       alert(`로그인 실패. 오류가 발생했습니다. ${error}`);

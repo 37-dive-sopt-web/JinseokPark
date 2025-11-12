@@ -22,3 +22,17 @@ export interface LoginResponse {
   message: string;
   success: boolean;
 }
+
+export interface getInfoResponse {
+  code: string;
+  data: {
+    id: number;
+    username: string;
+    name: string;
+    email: string;
+    age: number;
+    status: string;
+  };
+  message: string;
+  success: boolean;
+}
