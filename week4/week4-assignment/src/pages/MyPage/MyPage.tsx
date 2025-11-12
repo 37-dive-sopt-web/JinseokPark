@@ -9,10 +9,13 @@ import {
 import { headerStyle, myPageStyle, idSectionStyle } from "./MyPage.css";
 import { useEffect, useState } from "react";
 import { useUserInfo } from "../../hooks/useUserInfo";
-import { getInfo } from "../../api/auth";
+import { getInfo, editInfo } from "../../api/auth";
+import type { ChangeEvent } from "react";
+import type { editInfoRequest } from "../../types/auth";
+import { useNavigate } from "react-router-dom";
 
 interface UserData {
-  username: string;
+  username?: string;
   name: string;
   email: string;
   age: number;
@@ -26,6 +29,15 @@ const MyPage = () => {
     age: 0,
   });
   const { userId } = useUserInfo();
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [displayName, setDisplayName] = useState("");
+  const navigate = useNavigate();
+
+  const handleInputChange =
+    (field: keyof UserData) => (e: ChangeEvent<HTMLInputElement>) => {
+      const value = field === "age" ? Number(e.target.value) : e.target.value;
+      setUserData((prev) => ({ ...prev, [field]: value }));
+    };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,20 +46,39 @@ const MyPage = () => {
       try {
         const response = await getInfo(userId);
         setUserData(response.data);
+        setDisplayName(response.data.name);
       } catch (error) {
         alert(`불러오기 실패. ${error}`);
       }
     };
 
     fetchData();
-  }, []);
+  }, [refreshKey, userId]);
+
+  const handleEdit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data: editInfoRequest = {
+      name: userData.name,
+      email: userData.email,
+      age: userData.age,
+    };
+
+    try {
+      const response = await editInfo(userId, data);
+      alert(`수정 성공 ${response}`);
+      setRefreshKey((prev) => prev + 1);
+      navigate("/mypage");
+    } catch (error) {
+      alert(`정보 수정 실패. ${error}`);
+    }
+  };
 
   return (
     <div className={myPageStyle}>
       <header className={headerStyle}>
         <div>
           <h2>마이페이지</h2>
-          <p>안녕하세요, {userData.name}님</p>
+          <p>안녕하세요, {displayName}님</p>
         </div>
         <nav>
           <p>내 정보</p>
@@ -57,7 +88,7 @@ const MyPage = () => {
         </nav>
       </header>
       <div className={formWrapper}>
-        <form className={formStyle}>
+        <form className={formStyle} onSubmit={handleEdit}>
           <h2>내 정보</h2>
           <div className={idSectionStyle}>
             <p>아이디</p>
@@ -69,7 +100,7 @@ const MyPage = () => {
               value={userData.name}
               placeholder="수정할 이름을 입력해주세요."
               type="text"
-              onChange={() => console.log(1)}
+              onChange={handleInputChange("name")}
               id="member-name"
             />
           </div>
@@ -79,7 +110,7 @@ const MyPage = () => {
               value={userData.email}
               placeholder="수정할 이메일을 입력해주세요."
               type="text"
-              onChange={() => console.log(1)}
+              onChange={handleInputChange("email")}
               id="member-email"
             />
           </div>
@@ -88,8 +119,8 @@ const MyPage = () => {
             <Input
               value={userData.age}
               placeholder="수정할 나이를 입력해주세요."
-              type="text"
-              onChange={() => console.log(1)}
+              type="number"
+              onChange={handleInputChange("age")}
               id="member-age"
             />
           </div>

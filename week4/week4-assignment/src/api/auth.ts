@@ -5,6 +5,8 @@ import type {
   LoginRequest,
   LoginResponse,
   getInfoResponse,
+  editInfoRequest,
+  editInfoResponse,
 } from "../types/auth";
 
 export async function signUp(data: SignUpRequest): Promise<SignUpResponse> {
@@ -19,5 +21,16 @@ export async function logIn(data: LoginRequest): Promise<LoginResponse> {
 
 export async function getInfo(data: number): Promise<getInfoResponse> {
   const response = await client.get<getInfoResponse>(`/api/v1/users/${data}`);
+  return response.data;
+}
+
+export async function editInfo(
+  userId: number,
+  data: editInfoRequest
+): Promise<editInfoResponse> {
+  const response = await client.patch<editInfoResponse>(
+    `/api/v1/users/${userId}`,
+    data
+  );
   return response.data;
 }
