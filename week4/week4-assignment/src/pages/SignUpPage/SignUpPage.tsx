@@ -101,20 +101,22 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className={formWrapper}>
-      <form className={formStyle} onSubmit={handleSubmit}>
-        <h2>회원가입</h2>
-        {stepForm()}
-        {step < 3 ? (
-          <Button type="submit" disabled={!isValid}>
-            다음
-          </Button>
-        ) : (
-          <Button type="submit" disabled={!isValid}>
-            가입하기
-          </Button>
-        )}
-      </form>
+    <div style={{ height: "100vh" }}>
+      <div className={formWrapper}>
+        <form className={formStyle} onSubmit={handleSubmit}>
+          <h2>회원가입</h2>
+          {stepForm()}
+          {step < 3 ? (
+            <Button type="submit" disabled={!isValid}>
+              다음
+            </Button>
+          ) : (
+            <Button type="submit" disabled={!isValid}>
+              가입하기
+            </Button>
+          )}
+        </form>
+      </div>
     </div>
   );
 };
