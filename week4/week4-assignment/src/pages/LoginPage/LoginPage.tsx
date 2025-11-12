@@ -16,21 +16,23 @@ const LoginPage = () => {
       <form className={formStyle}>
         <h2>로그인</h2>
         <div className={formInputField}>
-          <label>아이디</label>
+          <label htmlFor="login-id">아이디</label>
           <Input
             value=""
             placeholder="아이디를 입력해주세요"
             type="text"
             onChange={() => console.log("1")}
+            id="login-id"
           />
         </div>
         <div className={formInputField}>
-          <label>비밀번호</label>
+          <label htmlFor="login-pwd">비밀번호</label>
           <Input
             value=""
             placeholder="비밀번호를 입력해주세요"
             type="text"
             onChange={() => console.log("1")}
+            id="login-pwd"
           />
         </div>
         <div className={formBtnContainer}>

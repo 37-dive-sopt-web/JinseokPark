@@ -6,9 +6,16 @@ interface InputProps {
   placeholder: string;
   type: "text" | "password" | "email" | "number";
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  id: string;
 }
 
-const Input = ({ value, placeholder, type = "text", onChange }: InputProps) => {
+const Input = ({
+  value,
+  placeholder,
+  type = "text",
+  onChange,
+  id,
+}: InputProps) => {
   return (
     <input
       value={String(value ?? "")}
@@ -16,6 +23,7 @@ const Input = ({ value, placeholder, type = "text", onChange }: InputProps) => {
       type={type}
       onChange={onChange}
       className={InputStyle}
+      id={id}
     />
   );
 };

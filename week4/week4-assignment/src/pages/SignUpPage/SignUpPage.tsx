@@ -25,12 +25,13 @@ const SignUpPage = () => {
         return (
           <>
             <div className={formInputField}>
-              <label>아이디</label>
+              <label htmlFor="signup-id">아이디</label>
               <Input
                 value={formData.username}
                 placeholder="아이디를 입력해주세요"
                 type="text"
                 onChange={handleInputChange("username")}
+                id="signup-id"
               />
             </div>
           </>
@@ -39,21 +40,23 @@ const SignUpPage = () => {
         return (
           <>
             <div className={formInputField}>
-              <label>비밀번호</label>
+              <label htmlFor="signup-pwd">비밀번호</label>
               <Input
                 value={formData.password}
                 placeholder="비밀번호를 입력해주세요"
                 type="password"
                 onChange={handleInputChange("password")}
+                id="signup-pwd"
               />
             </div>
             <div className={formInputField}>
-              <label>비밀번호 확인</label>
+              <label htmlFor="signup-pwdConfirm">비밀번호 확인</label>
               <Input
                 value={passwordConfirm}
                 placeholder="비밀번호를 한번 더 입력해주세요"
                 type="password"
                 onChange={handlePasswordConfirm}
+                id="signup-pwdConfirm"
               />
             </div>
           </>
@@ -63,30 +66,33 @@ const SignUpPage = () => {
         return (
           <>
             <div className={formInputField}>
-              <label>이름</label>
+              <label htmlFor="signup-name">이름</label>
               <Input
                 value={formData.name}
                 placeholder="이름을 입력해주세요"
                 type="text"
                 onChange={handleInputChange("name")}
+                id="signup-name"
               />
             </div>
             <div className={formInputField}>
-              <label>이메일</label>
+              <label htmlFor="signup-email">이메일</label>
               <Input
                 value={formData.email}
                 placeholder="name@example.com"
                 type="email"
                 onChange={handleInputChange("email")}
+                id="signup-email"
               />
             </div>
             <div className={formInputField}>
-              <label>나이</label>
+              <label htmlFor="signup-age">나이</label>
               <Input
                 value={formData.age}
                 placeholder="숫자로 입력해주세요"
                 type="number"
                 onChange={handleInputChange("age")}
+                id="signup-age"
               />
             </div>
           </>
