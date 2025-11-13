@@ -50,8 +50,6 @@ export const useSignUp = () => {
       return;
     }
 
-    console.log(JSON.stringify(formData.age));
-
     const data: SignUpRequest = {
       username: formData.username,
       password: formData.password,
@@ -62,7 +60,7 @@ export const useSignUp = () => {
 
     try {
       const response = await signUp(data);
-      alert(`회원가입 성공! ${response.message}`);
+      alert(`회원가입 성공! ${response.data.name}님 반갑습니다!`);
       navigate("/");
     } catch (error) {
       alert(`회원가입 실패. 오류가 발생했습니다. ${error}`);
