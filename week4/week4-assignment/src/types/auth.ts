@@ -56,3 +56,9 @@ export interface editInfoResponse {
   message: string;
   success: boolean;
 }
+
+export interface deleteIdResponse {
+  code: string;
+  message: string;
+  success: boolean;
+}

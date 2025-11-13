@@ -34,3 +34,10 @@ export async function editInfo(
   );
   return response.data;
 }
+
+export async function deleteId(userId: number) {
+  const response = await client.delete<getInfoResponse>(
+    `/api/v1/users/${userId}`
+  );
+  return response.data;
+}

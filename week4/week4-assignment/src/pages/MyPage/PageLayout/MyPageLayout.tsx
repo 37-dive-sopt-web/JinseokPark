@@ -1,11 +1,14 @@
 import { myPageStyle, headerStyle } from "./MyPageLayout.css";
 import { useUserInfo } from "../../../hooks/useUserInfo";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import DeleteIdModal from "../../Modal/DeleteIdModal";
 
 const PageLayout = () => {
   const { userName } = useUserInfo();
   const navigate = useNavigate();
   const displayName = userName;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleNav = (path: string) => {
     navigate(path);
@@ -22,12 +25,13 @@ const PageLayout = () => {
           <p onClick={() => handleNav("/mypage")}>내 정보</p>
           <p onClick={() => handleNav("/mypage/members")}>회원 조회</p>
           <p onClick={() => handleNav("/")}>로그아웃</p>
-          <p onClick={() => handleNav("/mypage")}>회원 탈퇴</p>
+          <p onClick={() => setIsModalOpen(true)}>회원 탈퇴</p>
         </nav>
       </header>
       <main>
         <Outlet />
       </main>
+      {isModalOpen && <DeleteIdModal onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };
