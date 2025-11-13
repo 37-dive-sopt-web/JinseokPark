@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import type { LoginRequest } from "../../types/auth";
 import { logIn } from "../../api/auth";
 import { useUserInfo } from "../../hooks/useUserInfo";
+import { useCallback, useEffect } from "react";
 interface LoginData {
   username: string;
   password: string;
@@ -23,6 +24,7 @@ const LoginPage = () => {
     password: "",
   });
   const { setUserId } = useUserInfo();
+  const [isValid, setIsValid] = useState(false);
 
   const handleInputChange =
     (field: keyof LoginData) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +54,26 @@ const LoginPage = () => {
     }
   };
 
+  const validateExam = useCallback((): boolean => {
+    let isValid = true;
+    const requiredInput: string[] = [loginData.username, loginData.password];
+
+    if (
+      requiredInput.some(
+        (value) => !value || (typeof value === "string" && value.trim() === "")
+      )
+    ) {
+      isValid = false;
+    }
+
+    return isValid;
+  }, [loginData]);
+
+  // useEffect 활용 유효성 검사
+  useEffect(() => {
+    setIsValid(validateExam());
+  }, [loginData, validateExam]);
+
   return (
     <div style={{ height: "100vh" }}>
       <div className={formWrapper}>
@@ -78,7 +100,9 @@ const LoginPage = () => {
             />
           </div>
           <div className={formBtnContainer}>
-            <Button type="submit">로그인</Button>
+            <Button type="submit" disabled={!isValid}>
+              로그인
+            </Button>
             <Button type="button" onClick={handleGoSignUp}>
               회원가입
             </Button>
