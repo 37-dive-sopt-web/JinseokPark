@@ -15,4 +15,11 @@ export const buttonStyle = style({
   ":hover": {
     backgroundColor: theme.colors.hover,
   },
+  ":disabled": {
+    backgroundColor: theme.colors.gray,
+    color: theme.colors.white,
+    cursor: "not-allowed",
+    opacity: "0.8",
+    pointerEvents: "none",
+  },
 });
