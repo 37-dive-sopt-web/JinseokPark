@@ -1,68 +1,23 @@
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
-import type { ChangeEvent } from "react";
-import { getInfo } from "../../../api/auth";
-import { useState, useCallback, useEffect } from "react";
 import {
   formWrapper,
   formStyle,
   formInputField,
 } from "../../../styles/formLayout.css";
 import { memberInfoStyle, infoItem, noResultStyle } from "./MemberInfo.css";
-
-interface UserData {
-  username?: string;
-  name: string;
-  email: string;
-  age: number;
-}
+import { useMemberInfo } from "../../../hooks/useMemberInfo";
 
 const MemberInfo = () => {
-  const [userId, setUserId] = useState<string | number>("");
-  const [userData, setUserData] = useState<UserData>({
-    username: "",
-    name: "",
-    email: "",
-    age: 0,
-  });
-  const [isValid, setIsValid] = useState(false);
-  const [isSearched, setSearched] = useState(false);
-  const [isBtnValid, setIsBtnValid] = useState(false);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    setUserId(value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!userId) return;
-
-    try {
-      const response = await getInfo(Number(userId));
-      alert("성공!");
-      setUserData(response.data);
-      setIsValid(true);
-      setSearched(true);
-    } catch (error) {
-      alert(`불러오기 실패. ${error}`);
-      setIsValid(false);
-      setSearched(true);
-    }
-  };
-
-  const validateExam = useCallback((): boolean => {
-    let isBtnValid = true;
-    if (userId === "" || String(userId).trim() === "") {
-      isBtnValid = false;
-    }
-    return isBtnValid;
-  }, [userId]);
-
-  // useEffect 활용 유효성 검사
-  useEffect(() => {
-    setIsBtnValid(validateExam());
-  }, [userId, validateExam]);
+  const {
+    userId,
+    isBtnValid,
+    userData,
+    isSearched,
+    isValid,
+    handleInputChange,
+    handleSubmit,
+  } = useMemberInfo();
 
   return (
     <div className={formWrapper}>
@@ -73,7 +28,7 @@ const MemberInfo = () => {
           <Input
             value={userId}
             placeholder="회원 아이디를 입력해주세요(숫자만 입력)"
-            type="number"
+            type="text"
             onChange={handleInputChange}
             id="memberInfo-id"
           />
