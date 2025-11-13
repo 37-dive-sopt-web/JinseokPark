@@ -6,6 +6,8 @@ import {
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useSignUp } from "../../hooks/useSignUp";
+import { useNavigate } from "react-router-dom";
+import { goLoginStyle } from "./SignUpPage.css";
 
 const SignUpPage = () => {
   const {
@@ -17,6 +19,7 @@ const SignUpPage = () => {
     handleSubmit,
     isValid,
   } = useSignUp();
+  const navigate = useNavigate();
 
   // 단계에 따라 다른 폼 렌더링
   const stepForm = () => {
@@ -116,6 +119,10 @@ const SignUpPage = () => {
             </Button>
           )}
         </form>
+        <div className={goLoginStyle}>
+          <p>계정이 이미 있으신가요?</p>
+          <span onClick={() => navigate("/")}>로그인으로 돌아가기</span>
+        </div>
       </div>
     </div>
   );
