@@ -2,7 +2,7 @@ import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import type { ChangeEvent } from "react";
 import { getInfo } from "../../../api/auth";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   formWrapper,
   formStyle,
@@ -18,7 +18,7 @@ interface UserData {
 }
 
 const MemberInfo = () => {
-  const [userId, setUserId] = useState<number | undefined>(undefined);
+  const [userId, setUserId] = useState<string | number>("");
   const [userData, setUserData] = useState<UserData>({
     username: "",
     name: "",
@@ -27,6 +27,7 @@ const MemberInfo = () => {
   });
   const [isValid, setIsValid] = useState(false);
   const [isSearched, setSearched] = useState(false);
+  const [isBtnValid, setIsBtnValid] = useState(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -38,7 +39,7 @@ const MemberInfo = () => {
     if (!userId) return;
 
     try {
-      const response = await getInfo(userId);
+      const response = await getInfo(Number(userId));
       alert("성공!");
       setUserData(response.data);
       setIsValid(true);
@@ -49,6 +50,19 @@ const MemberInfo = () => {
       setSearched(true);
     }
   };
+
+  const validateExam = useCallback((): boolean => {
+    let isBtnValid = true;
+    if (userId === "" || String(userId).trim() === "") {
+      isBtnValid = false;
+    }
+    return isBtnValid;
+  }, [userId]);
+
+  // useEffect 활용 유효성 검사
+  useEffect(() => {
+    setIsBtnValid(validateExam());
+  }, [userId, validateExam]);
 
   return (
     <div className={formWrapper}>
@@ -64,7 +78,9 @@ const MemberInfo = () => {
             id="memberInfo-id"
           />
         </div>
-        <Button type="submit">확인</Button>
+        <Button type="submit" disabled={!isBtnValid}>
+          확인
+        </Button>
       </form>
       {isValid ? (
         <div className={memberInfoStyle}>
