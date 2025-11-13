@@ -3,7 +3,7 @@ import { buttonStyle } from "./Button.css";
 
 interface ButtonProps {
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: "button" | "submit";
   disabled?: boolean;
 }

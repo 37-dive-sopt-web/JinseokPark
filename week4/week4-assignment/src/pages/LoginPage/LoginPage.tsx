@@ -29,6 +29,11 @@ const LoginPage = () => {
       setLoginData((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
+  const handleGoSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    navigate("/signup");
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -74,7 +79,9 @@ const LoginPage = () => {
           </div>
           <div className={formBtnContainer}>
             <Button type="submit">로그인</Button>
-            <Button onClick={() => navigate("/signup")}>회원가입</Button>
+            <Button type="button" onClick={handleGoSignUp}>
+              회원가입
+            </Button>
           </div>
         </form>
       </div>
