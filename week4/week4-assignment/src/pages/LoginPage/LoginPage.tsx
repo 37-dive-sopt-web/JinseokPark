@@ -1,6 +1,7 @@
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { useLogin } from "../../hooks/useLogin";
+import { loginFailedStyle } from "./LoginPage.css";
 import {
   formWrapper,
   formInputField,
@@ -12,6 +13,7 @@ const LoginPage = () => {
   const {
     loginData,
     isValid,
+    isLoginFailed,
     handleSubmit,
     handleInputChange,
     handleGoSignUp,
@@ -41,6 +43,11 @@ const LoginPage = () => {
               id="login-pwd"
             />
           </div>
+          {isLoginFailed && (
+            <div className={loginFailedStyle}>
+              <p>로그인 정보가 맞지 않습니다</p>
+            </div>
+          )}
           <div className={formBtnContainer}>
             <Button type="submit" disabled={!isValid}>
               로그인

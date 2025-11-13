@@ -19,6 +19,7 @@ export const useLogin = () => {
   });
   const { setUserId } = useUserInfo();
   const [isValid, setIsValid] = useState(false);
+  const [isLoginFailed, setIsLoginFailed] = useState(false);
 
   const handleInputChange =
     (field: keyof LoginData) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,11 +41,11 @@ export const useLogin = () => {
 
     try {
       const response = await logIn(data);
-      alert(`로그인 성공! ${response.data.userId}`);
       setUserId(response.data.userId);
       navigate("/mypage");
     } catch (error) {
-      alert(`로그인 실패. 오류가 발생했습니다. ${error}`);
+      setIsLoginFailed(true);
+      console.error("로그인 실패:", error);
     }
   };
 
@@ -74,5 +75,6 @@ export const useLogin = () => {
     handleInputChange,
     isValid,
     handleGoSignUp,
+    isLoginFailed,
   };
 };
