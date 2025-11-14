@@ -7,7 +7,8 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useSignUp } from "../../hooks/useSignUp";
 import { useNavigate } from "react-router-dom";
-import { goLoginStyle, passwordContainerStyle } from "./SignUpPage.css";
+import { goLoginStyle } from "./SignUpPage.css";
+import { passwordContainerStyle } from "../../styles/formLayout.css";
 
 const SignUpPage = () => {
   const {

@@ -42,3 +42,20 @@ globalStyle(`${formBtnContainer} button:nth-child(2)`, {
 globalStyle(`${formBtnContainer} button:nth-child(2):hover`, {
   color: theme.colors.point,
 });
+
+export const passwordContainerStyle = style({
+  position: "relative",
+});
+
+globalStyle(`${passwordContainerStyle} button`, {
+  position: "absolute",
+  right: "1rem",
+  top: "50%",
+  transform: "translateY(-50%)",
+  border: "none",
+  background: "none",
+  cursor: "pointer",
+  fontSize: theme.fontSizes.large,
+  color: "#777",
+  zIndex: 10,
+});

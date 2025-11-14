@@ -8,6 +8,8 @@ import {
   formBtnContainer,
   formStyle,
 } from "../../styles/formLayout.css";
+import { useSignUp } from "../../hooks/useSignUp";
+import { passwordContainerStyle } from "../../styles/formLayout.css";
 
 const LoginPage = () => {
   const {
@@ -18,6 +20,8 @@ const LoginPage = () => {
     handleInputChange,
     handleGoSignUp,
   } = useLogin();
+  const { showPassword, toggleShowPassword } = useSignUp();
+
   return (
     <div style={{ height: "100vh" }}>
       <div className={formWrapper}>
@@ -35,13 +39,22 @@ const LoginPage = () => {
           </div>
           <div className={formInputField}>
             <label htmlFor="login-pwd">비밀번호</label>
-            <Input
-              value={loginData.password}
-              placeholder="비밀번호를 입력해주세요"
-              type="text"
-              onChange={handleInputChange("password")}
-              id="login-pwd"
-            />
+            <div className={passwordContainerStyle}>
+              <Input
+                value={loginData.password}
+                placeholder="비밀번호를 입력해주세요"
+                type={showPassword ? "text" : "password"}
+                onChange={handleInputChange("password")}
+                id="login-pwd"
+              />
+              <button type="button" onClick={toggleShowPassword}>
+                {showPassword ? (
+                  <i className="fa-regular fa-eye-slash"></i>
+                ) : (
+                  <i className="fa-regular fa-eye"></i>
+                )}
+              </button>
+            </div>
           </div>
           {isLoginFailed && (
             <div className={loginFailedStyle}>
