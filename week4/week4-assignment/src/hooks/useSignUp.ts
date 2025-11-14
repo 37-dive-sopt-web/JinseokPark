@@ -12,6 +12,33 @@ interface FormData {
   age: number | undefined;
 }
 
+const validatePasswordPolicy = (password: string): string => {
+  if (!password) return "";
+
+  if (password.length < 8 || password.length > 64) {
+    return "8자 이상 64자 이하로 입력해주세요.";
+  }
+
+  if (/\s/.test(password)) {
+    return "공백은 포함할 수 없습니다.";
+  }
+
+  const hasLower = /[a-z]/.test(password);
+  const hasUpper = /[A-Z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSpecial = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
+
+  const requiredCount = [hasLower, hasUpper, hasNumber, hasSpecial].filter(
+    Boolean
+  ).length;
+
+  if (requiredCount < 4) {
+    return "대소문자, 숫자, 특수문자를 모두 포함해야 합니다.";
+  }
+
+  return "";
+};
+
 export const useSignUp = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
@@ -25,6 +52,8 @@ export const useSignUp = () => {
   const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   const [isValid, setIsValid] = useState(false);
   const [isIdValid, setIsIdValid] = useState(true);
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordConfirmError, setPasswordConfirmError] = useState(false);
 
   // 인풋에 작성한 값 formData로 저장
   const handleInputChange =
@@ -34,6 +63,11 @@ export const useSignUp = () => {
         return;
       } else {
         setIsIdValid(true);
+      }
+
+      if (field === "password") {
+        const error = validatePasswordPolicy(e.target.value);
+        setPasswordError(error);
       }
 
       const value = field === "age" ? Number(e.target.value) : e.target.value;
@@ -102,10 +136,17 @@ export const useSignUp = () => {
 
     if (step === 2 && isValid && formData.password !== passwordConfirm) {
       isValid = false;
+      setPasswordConfirmError(true);
+    } else {
+      setPasswordConfirmError(false);
+    }
+
+    if (passwordError) {
+      return false;
     }
 
     return isValid;
-  }, [formData, passwordConfirm, step, isIdValid]);
+  }, [formData, passwordConfirm, step, isIdValid, passwordError]);
 
   // useEffect 활용 유효성 검사
   useEffect(() => {
@@ -121,5 +162,7 @@ export const useSignUp = () => {
     handleSubmit,
     isValid,
     isIdValid,
+    passwordError,
+    passwordConfirmError,
   };
 };

@@ -19,6 +19,8 @@ const SignUpPage = () => {
     handleSubmit,
     isValid,
     isIdValid,
+    passwordError,
+    passwordConfirmError,
   } = useSignUp();
   const navigate = useNavigate();
 
@@ -53,6 +55,11 @@ const SignUpPage = () => {
                 id="signup-pwd"
               />
             </div>
+            {passwordError && (
+              <div>
+                <p>{passwordError}</p>
+              </div>
+            )}
             <div className={formInputField}>
               <label htmlFor="signup-pwdConfirm">비밀번호 확인</label>
               <Input
@@ -63,6 +70,11 @@ const SignUpPage = () => {
                 id="signup-pwdConfirm"
               />
             </div>
+            {passwordConfirmError && (
+              <div>
+                <p>비밀번호가 일치하지 않습니다.</p>
+              </div>
+            )}
           </>
         );
 
