@@ -18,6 +18,7 @@ const SignUpPage = () => {
     handlePasswordConfirm,
     handleSubmit,
     isValid,
+    isIdValid,
   } = useSignUp();
   const navigate = useNavigate();
 
@@ -109,6 +110,11 @@ const SignUpPage = () => {
         <form className={formStyle} onSubmit={handleSubmit}>
           <h2>회원가입</h2>
           {stepForm()}
+          {!isIdValid && (
+            <div>
+              <p>아이디는 50자를 초과할 수 없습니다.</p>
+            </div>
+          )}
           {step < 3 ? (
             <Button type="submit" disabled={!isValid}>
               다음

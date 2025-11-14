@@ -24,10 +24,18 @@ export const useSignUp = () => {
   });
   const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   const [isValid, setIsValid] = useState(false);
+  const [isIdValid, setIsIdValid] = useState(true);
 
   // 인풋에 작성한 값 formData로 저장
   const handleInputChange =
     (field: keyof FormData) => (e: ChangeEvent<HTMLInputElement>) => {
+      if (field === "username" && e.target.value.length > 50) {
+        setIsIdValid(false);
+        return;
+      } else {
+        setIsIdValid(true);
+      }
+
       const value = field === "age" ? Number(e.target.value) : e.target.value;
       setFormData((prev) => ({ ...prev, [field]: value }));
     };
@@ -72,6 +80,10 @@ export const useSignUp = () => {
     let isValid = true;
     let requiredInput: (string | number | undefined)[] = [];
 
+    if (!isIdValid) {
+      return false;
+    }
+
     if (step === 1) {
       requiredInput = [formData.username];
     } else if (step === 2) {
@@ -93,7 +105,7 @@ export const useSignUp = () => {
     }
 
     return isValid;
-  }, [formData, passwordConfirm, step]);
+  }, [formData, passwordConfirm, step, isIdValid]);
 
   // useEffect 활용 유효성 검사
   useEffect(() => {
@@ -108,5 +120,6 @@ export const useSignUp = () => {
     handlePasswordConfirm,
     handleSubmit,
     isValid,
+    isIdValid,
   };
 };
