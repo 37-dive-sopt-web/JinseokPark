@@ -7,7 +7,7 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useSignUp } from "../../hooks/useSignUp";
 import { useNavigate } from "react-router-dom";
-import { goLoginStyle } from "./SignUpPage.css";
+import { goLoginStyle, passwordContainerStyle } from "./SignUpPage.css";
 
 const SignUpPage = () => {
   const {
@@ -21,6 +21,10 @@ const SignUpPage = () => {
     isIdValid,
     passwordError,
     passwordConfirmError,
+    showPassword,
+    toggleShowPassword,
+    showPasswordConfirm,
+    toggleShowPasswordConfirm,
   } = useSignUp();
   const navigate = useNavigate();
 
@@ -40,6 +44,11 @@ const SignUpPage = () => {
                 id="signup-id"
               />
             </div>
+            {!isIdValid && (
+              <div>
+                <p>아이디는 50자를 초과할 수 없습니다.</p>
+              </div>
+            )}
           </>
         );
       case 2:
@@ -47,13 +56,22 @@ const SignUpPage = () => {
           <>
             <div className={formInputField}>
               <label htmlFor="signup-pwd">비밀번호</label>
-              <Input
-                value={formData.password}
-                placeholder="비밀번호를 입력해주세요"
-                type="password"
-                onChange={handleInputChange("password")}
-                id="signup-pwd"
-              />
+              <div className={passwordContainerStyle}>
+                <Input
+                  value={formData.password}
+                  placeholder="비밀번호를 입력해주세요"
+                  type={showPassword ? "text" : "password"}
+                  onChange={handleInputChange("password")}
+                  id="signup-pwd"
+                />
+                <button type="button" onClick={toggleShowPassword}>
+                  {showPassword ? (
+                    <i className="fa-regular fa-eye-slash"></i>
+                  ) : (
+                    <i className="fa-regular fa-eye"></i>
+                  )}
+                </button>
+              </div>
             </div>
             {passwordError && (
               <div>
@@ -62,13 +80,22 @@ const SignUpPage = () => {
             )}
             <div className={formInputField}>
               <label htmlFor="signup-pwdConfirm">비밀번호 확인</label>
-              <Input
-                value={passwordConfirm}
-                placeholder="비밀번호를 한번 더 입력해주세요"
-                type="password"
-                onChange={handlePasswordConfirm}
-                id="signup-pwdConfirm"
-              />
+              <div className={passwordContainerStyle}>
+                <Input
+                  value={passwordConfirm}
+                  placeholder="비밀번호를 한번 더 입력해주세요"
+                  type={showPasswordConfirm ? "text" : "password"}
+                  onChange={handlePasswordConfirm}
+                  id="signup-pwdConfirm"
+                />
+                <button type="button" onClick={toggleShowPasswordConfirm}>
+                  {showPasswordConfirm ? (
+                    <i className="fa-regular fa-eye-slash"></i>
+                  ) : (
+                    <i className="fa-regular fa-eye"></i>
+                  )}
+                </button>
+              </div>
             </div>
             {passwordConfirmError && (
               <div>
@@ -122,11 +149,6 @@ const SignUpPage = () => {
         <form className={formStyle} onSubmit={handleSubmit}>
           <h2>회원가입</h2>
           {stepForm()}
-          {!isIdValid && (
-            <div>
-              <p>아이디는 50자를 초과할 수 없습니다.</p>
-            </div>
-          )}
           {step < 3 ? (
             <Button type="submit" disabled={!isValid}>
               다음

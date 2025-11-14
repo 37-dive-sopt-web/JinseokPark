@@ -54,6 +54,8 @@ export const useSignUp = () => {
   const [isIdValid, setIsIdValid] = useState(true);
   const [passwordError, setPasswordError] = useState("");
   const [passwordConfirmError, setPasswordConfirmError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 
   // 인풋에 작성한 값 formData로 저장
   const handleInputChange =
@@ -153,6 +155,14 @@ export const useSignUp = () => {
     setIsValid(validateExam());
   }, [formData, passwordConfirm, step, validateExam]);
 
+  const toggleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const toggleShowPasswordConfirm = () => {
+    setShowPasswordConfirm((prev) => !prev);
+  };
+
   return {
     step,
     formData,
@@ -164,5 +174,9 @@ export const useSignUp = () => {
     isIdValid,
     passwordError,
     passwordConfirmError,
+    showPassword,
+    toggleShowPassword,
+    showPasswordConfirm,
+    toggleShowPasswordConfirm,
   };
 };
