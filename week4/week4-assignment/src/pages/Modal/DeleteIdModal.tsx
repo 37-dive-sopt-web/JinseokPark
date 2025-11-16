@@ -38,7 +38,12 @@ const DeleteIdModal = ({ onClose }: DeleteIdModalProps) => {
       <div className={modalContentStyle}>
         <h2>정말 탈퇴하시겠어요?</h2>
         <p>탈퇴 후에는 모든 정보가 삭제돼요</p>
-        <div className={modalBtnContainer}>
+        <div
+          className={modalBtnContainer}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
           <button onClick={onClose}>취소</button>
           <button onClick={handleDeleteId}>회원 탈퇴</button>
         </div>
