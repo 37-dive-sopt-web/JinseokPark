@@ -24,7 +24,7 @@ const PageLayout = () => {
   };
 
   const handleLogout = () => {
-    setUserId(0);
+    setUserId(null);
     navigate("/");
   };
 

@@ -16,7 +16,7 @@ interface DeleteIdModalProps {
 
 const DeleteIdModal = ({ onClose }: DeleteIdModalProps) => {
   const navigate = useNavigate();
-  const { userId } = useUserInfo();
+  const { userId, setUserId } = useUserInfo();
 
   if (!modalRoot) {
     return null;
@@ -31,6 +31,7 @@ const DeleteIdModal = ({ onClose }: DeleteIdModalProps) => {
       const response = await deleteId(userId);
       alert("회원 삭제 성공");
       console.log(response);
+      setUserId(null);
       navigate("/");
     } catch (error) {
       alert(`계정 삭제 실패. 오류가 발생했습니다. ${error}`);

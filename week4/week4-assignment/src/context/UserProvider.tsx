@@ -8,7 +8,7 @@ interface UserProviderProps {
 }
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [userId, setUserId] = useState<number>(0);
+  const [userId, setUserId] = useState<number | null>(null);
   const [userName, setUserName] = useState<string>("");
 
   const contextValue: UserContextType = {

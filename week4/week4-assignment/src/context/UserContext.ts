@@ -1,9 +1,9 @@
 import { createContext } from "react";
 
 export interface UserContextType {
-  userId: number;
+  userId: number | null;
   userName: string;
-  setUserId: (id: number) => void;
+  setUserId: (id: number | null) => void;
   setUserName: (name: string) => void;
 }
 
