@@ -2,13 +2,13 @@ import {
   formWrapper,
   formStyle,
   formInputField,
+  passwordContainerStyle,
 } from "../../styles/formLayout.css";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useSignUp } from "../../hooks/useSignUp";
 import { useNavigate } from "react-router-dom";
-import { goLoginStyle } from "./SignUpPage.css";
-import { passwordContainerStyle } from "../../styles/formLayout.css";
+import { goLoginStyle, errorTextStyle } from "./SignUpPage.css";
 
 const SignUpPage = () => {
   const {
@@ -46,7 +46,7 @@ const SignUpPage = () => {
               />
             </div>
             {!isIdValid && (
-              <div>
+              <div className={errorTextStyle}>
                 <p>아이디는 50자를 초과할 수 없습니다.</p>
               </div>
             )}
@@ -81,7 +81,7 @@ const SignUpPage = () => {
               </div>
             </div>
             {passwordError && (
-              <div>
+              <div className={errorTextStyle}>
                 <p>{passwordError}</p>
               </div>
             )}
@@ -99,7 +99,7 @@ const SignUpPage = () => {
                   type="button"
                   onClick={toggleShowPasswordConfirm}
                   aria-label={
-                    showPassword ? "비밀번호 숨기기" : "비밀번호 보이기"
+                    showPasswordConfirm ? "비밀번호 숨기기" : "비밀번호 보이기"
                   }
                 >
                   {showPasswordConfirm ? (
@@ -111,7 +111,7 @@ const SignUpPage = () => {
               </div>
             </div>
             {passwordConfirmError && (
-              <div>
+              <div className={errorTextStyle}>
                 <p>비밀번호가 일치하지 않습니다.</p>
               </div>
             )}

@@ -11,3 +11,7 @@ globalStyle(`${goLoginStyle} span`, {
   color: theme.colors.main,
   cursor: "pointer",
 });
+
+export const errorTextStyle = style({
+  color: theme.colors.red,
+});
