@@ -65,7 +65,13 @@ const SignUpPage = () => {
                   onChange={handleInputChange("password")}
                   id="signup-pwd"
                 />
-                <button type="button" onClick={toggleShowPassword}>
+                <button
+                  type="button"
+                  onClick={toggleShowPassword}
+                  aria-label={
+                    showPassword ? "비밀번호 숨기기" : "비밀번호 보이기"
+                  }
+                >
                   {showPassword ? (
                     <i className="fa-regular fa-eye-slash"></i>
                   ) : (
@@ -89,7 +95,13 @@ const SignUpPage = () => {
                   onChange={handlePasswordConfirm}
                   id="signup-pwdConfirm"
                 />
-                <button type="button" onClick={toggleShowPasswordConfirm}>
+                <button
+                  type="button"
+                  onClick={toggleShowPasswordConfirm}
+                  aria-label={
+                    showPassword ? "비밀번호 숨기기" : "비밀번호 보이기"
+                  }
+                >
                   {showPasswordConfirm ? (
                     <i className="fa-regular fa-eye-slash"></i>
                   ) : (

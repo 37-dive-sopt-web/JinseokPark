@@ -47,7 +47,13 @@ const LoginPage = () => {
                 onChange={handleInputChange("password")}
                 id="login-pwd"
               />
-              <button type="button" onClick={toggleShowPassword}>
+              <button
+                type="button"
+                onClick={toggleShowPassword}
+                aria-label={
+                  showPassword ? "비밀번호 숨기기" : "비밀번호 보이기"
+                }
+              >
                 {showPassword ? (
                   <i className="fa-regular fa-eye-slash"></i>
                 ) : (
