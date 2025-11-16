@@ -35,7 +35,7 @@ const MyPage = () => {
           <Input
             value={userData.email}
             placeholder="수정할 이메일을 입력해주세요."
-            type="text"
+            type="email"
             onChange={handleInputChange("email")}
             id="member-email"
           />
@@ -43,7 +43,7 @@ const MyPage = () => {
         <div className={formInputField}>
           <label htmlFor="member-age">나이</label>
           <Input
-            value={userData.age}
+            value={userData.age === undefined ? "" : userData.age}
             placeholder="수정할 나이를 입력해주세요."
             type="number"
             onChange={handleInputChange("age")}

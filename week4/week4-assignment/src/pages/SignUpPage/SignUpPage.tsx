@@ -144,7 +144,7 @@ const SignUpPage = () => {
             <div className={formInputField}>
               <label htmlFor="signup-age">나이</label>
               <Input
-                value={formData.age}
+                value={formData.age === undefined ? "" : formData.age}
                 placeholder="숫자로 입력해주세요"
                 type="number"
                 onChange={handleInputChange("age")}

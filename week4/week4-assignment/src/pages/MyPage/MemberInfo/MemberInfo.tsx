@@ -27,7 +27,7 @@ const MemberInfo = () => {
           <label htmlFor="memberInfo-id">회원 ID</label>
           <Input
             value={userId}
-            placeholder="회원 아이디를 입력해주세요(숫자만 입력)"
+            placeholder="회원 ID를 입력해주세요(숫자만 입력)"
             type="text"
             onChange={handleInputChange}
             id="memberInfo-id"
