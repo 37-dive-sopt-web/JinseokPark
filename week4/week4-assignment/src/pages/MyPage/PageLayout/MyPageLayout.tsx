@@ -10,7 +10,7 @@ import { useState } from "react";
 import DeleteIdModal from "../../Modal/DeleteIdModal";
 
 const PageLayout = () => {
-  const { userName } = useUserInfo();
+  const { userName, setUserId } = useUserInfo();
   const navigate = useNavigate();
   const displayName = userName;
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +22,11 @@ const PageLayout = () => {
 
   const handleToggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
+  };
+
+  const handleLogout = () => {
+    setUserId(0);
+    navigate("/");
   };
 
   return (
@@ -38,7 +43,7 @@ const PageLayout = () => {
           <nav className={`${navMenuContainer} ${isMenuOpen ? "open" : ""}`}>
             <p onClick={() => handleNav("/mypage")}>내 정보</p>
             <p onClick={() => handleNav("/mypage/members")}>회원 조회</p>
-            <p onClick={() => handleNav("/")}>로그아웃</p>
+            <p onClick={handleLogout}>로그아웃</p>
             <p onClick={() => setIsModalOpen(true)}>회원 탈퇴</p>
           </nav>
         </div>
