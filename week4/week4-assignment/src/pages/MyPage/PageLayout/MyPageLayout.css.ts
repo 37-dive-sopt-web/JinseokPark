@@ -75,7 +75,7 @@ globalStyle(`${navMenuContainer}.open`, {
   },
 });
 
-globalStyle(`${navMenuContainer} p`, {
+globalStyle(`${navMenuContainer} a`, {
   padding: "2rem 0",
   textAlign: "center",
   cursor: "pointer",
@@ -88,7 +88,7 @@ globalStyle(`${navMenuContainer} p`, {
   },
 });
 
-globalStyle(`${navMenuContainer} p:hover`, {
+globalStyle(`${navMenuContainer} a:hover`, {
   "@media": {
     "screen and (max-width: 1024px)": {
       width: "100%",

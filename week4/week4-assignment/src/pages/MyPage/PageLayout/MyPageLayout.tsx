@@ -11,10 +11,9 @@ import DeleteIdModal from "../../Modal/DeleteIdModal";
 
 const PageLayout = () => {
   const { userName, setUserId } = useUserInfo();
-  const navigate = useNavigate();
-  const displayName = userName;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleNav = (path: string) => {
     navigate(path);
@@ -34,17 +33,21 @@ const PageLayout = () => {
       <header className={headerStyle}>
         <div>
           <h2>마이페이지</h2>
-          <p>안녕하세요, {displayName}님</p>
+          <p>안녕하세요, {userName}님</p>
         </div>
         <div>
-          <button className={menuBtn} onClick={handleToggleMenu}>
+          <button
+            className={menuBtn}
+            onClick={handleToggleMenu}
+            aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+          >
             <i className="fa-solid fa-bars"></i>
           </button>
           <nav className={`${navMenuContainer} ${isMenuOpen ? "open" : ""}`}>
-            <p onClick={() => handleNav("/mypage")}>내 정보</p>
-            <p onClick={() => handleNav("/mypage/members")}>회원 조회</p>
-            <p onClick={handleLogout}>로그아웃</p>
-            <p onClick={() => setIsModalOpen(true)}>회원 탈퇴</p>
+            <a onClick={() => handleNav("/mypage")}>내 정보</a>
+            <a onClick={() => handleNav("/mypage/members")}>회원 조회</a>
+            <a onClick={handleLogout}>로그아웃</a>
+            <a onClick={() => setIsModalOpen(true)}>회원 탈퇴</a>
           </nav>
         </div>
       </header>
