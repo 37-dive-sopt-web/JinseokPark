@@ -20,6 +20,7 @@ export const useLogin = () => {
   const { setUserId } = useUserInfo();
   const [isValid, setIsValid] = useState(false);
   const [isLoginFailed, setIsLoginFailed] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange =
     (field: keyof LoginData) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -69,6 +70,10 @@ export const useLogin = () => {
     setIsValid(validateExam());
   }, [loginData, validateExam]);
 
+  const toggleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return {
     handleSubmit,
     loginData,
@@ -76,5 +81,7 @@ export const useLogin = () => {
     isValid,
     handleGoSignUp,
     isLoginFailed,
+    toggleShowPassword,
+    showPassword,
   };
 };

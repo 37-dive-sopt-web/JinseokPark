@@ -8,7 +8,6 @@ import {
   formBtnContainer,
   formStyle,
 } from "../../styles/formLayout.css";
-import { useSignUp } from "../../hooks/useSignUp";
 import { passwordContainerStyle } from "../../styles/formLayout.css";
 
 const LoginPage = () => {
@@ -19,8 +18,9 @@ const LoginPage = () => {
     handleSubmit,
     handleInputChange,
     handleGoSignUp,
+    showPassword,
+    toggleShowPassword,
   } = useLogin();
-  const { showPassword, toggleShowPassword } = useSignUp();
 
   return (
     <div style={{ height: "100vh" }}>
