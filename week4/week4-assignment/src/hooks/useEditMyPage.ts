@@ -52,8 +52,9 @@ export const useEditMyPage = () => {
     };
 
     try {
+      if (userId === null) return;
       const response = await editInfo(userId, data);
-      alert(`수정 성공 ${response}`);
+      alert(`${response.data.name}님의 정보 수정 완료`);
       setRefreshKey((prev) => prev + 1);
       setUserName(userData.name);
     } catch (error) {
