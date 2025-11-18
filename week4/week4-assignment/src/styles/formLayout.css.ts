@@ -1,0 +1,61 @@
+import { style, globalStyle } from "@vanilla-extract/css";
+import { theme } from "../styles/theme.css";
+
+export const formWrapper = style({
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  gap: "3rem",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+export const formStyle = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing.large,
+  width: "40vw",
+  padding: "5rem",
+  borderRadius: "1.6rem",
+  backgroundColor: theme.colors.secondary,
+});
+
+export const formInputField = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing.small,
+});
+
+export const formBtnContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing.medium,
+  marginTop: theme.spacing.large,
+});
+
+globalStyle(`${formBtnContainer} button:nth-child(2)`, {
+  backgroundColor: theme.colors.white,
+  color: theme.colors.main,
+});
+
+globalStyle(`${formBtnContainer} button:nth-child(2):hover`, {
+  color: theme.colors.point,
+});
+
+export const passwordContainerStyle = style({
+  position: "relative",
+});
+
+globalStyle(`${passwordContainerStyle} button`, {
+  position: "absolute",
+  right: "1rem",
+  top: "50%",
+  transform: "translateY(-50%)",
+  border: "none",
+  background: "none",
+  cursor: "pointer",
+  fontSize: theme.fontSizes.large,
+  color: "#777",
+  zIndex: 10,
+});
